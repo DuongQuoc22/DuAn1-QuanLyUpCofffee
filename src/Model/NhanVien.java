@@ -12,13 +12,13 @@ import java.util.Date;
  */
 public class NhanVien {
     private String id_Nhanvien;
-    private String tenNV;
+    private String TenNV;
     private boolean gender;
-    private Date ngaySinh;
-    private String diaChi;
+    private Date Ngaysinh;
+    private String DiaChi;
     private String Email;
     private String SDT;
-    private String username;
+    private String userName;
     private String Pass;
     private boolean VaiTro;
     private boolean TrangThai;
@@ -33,11 +33,11 @@ public class NhanVien {
     }
 
     public String getTenNV() {
-        return tenNV;
+        return TenNV;
     }
 
-    public void setTenNV(String tenNV) {
-        this.tenNV = tenNV;
+    public void setTenNV(String TenNV) {
+        this.TenNV = TenNV;
     }
 
     public boolean isGender() {
@@ -48,20 +48,20 @@ public class NhanVien {
         this.gender = gender;
     }
 
-    public Date getNgaySinh() {
-        return ngaySinh;
+    public Date getNgaysinh() {
+        return Ngaysinh;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
-        this.ngaySinh = ngaySinh;
+    public void setNgaysinh(Date Ngaysinh) {
+        this.Ngaysinh = Ngaysinh;
     }
 
     public String getDiaChi() {
-        return diaChi;
+        return DiaChi;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
+    public void setDiaChi(String DiaChi) {
+        this.DiaChi = DiaChi;
     }
 
     public String getEmail() {
@@ -80,12 +80,12 @@ public class NhanVien {
         this.SDT = SDT;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPass() {
@@ -119,5 +119,4 @@ public class NhanVien {
     public void setHinh(String Hinh) {
         this.Hinh = Hinh;
     }
-    
 }
