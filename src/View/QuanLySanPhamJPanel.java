@@ -102,6 +102,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         tbnLamMoi = new javax.swing.JButton();
         btndonvi = new javax.swing.JButton();
         btnloaidouong = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(225, 193, 144));
         jPanel1.setLayout(null);
@@ -135,7 +136,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
         );
 
         tabs.addTab("Sản Phẩm sử dụng", jPanel2);
@@ -163,13 +164,13 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
         );
 
         tabs.addTab("Sản Phẩm không sử dụng", jPanel3);
 
         jPanel1.add(tabs);
-        tabs.setBounds(30, 100, 1220, 340);
+        tabs.setBounds(50, 460, 1220, 300);
 
         jPanel4.setBackground(new java.awt.Color(225, 193, 144));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Tìm kiếm(Tên hoặc Mã)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
@@ -198,43 +199,52 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         );
 
         jPanel1.add(jPanel4);
-        jPanel4.setBounds(330, 20, 511, 72);
+        jPanel4.setBounds(50, 400, 511, 72);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Mã sản phẩm");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(340, 500, 100, 17);
+        jLabel2.setBounds(450, 120, 100, 17);
 
         txtMaSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel1.add(txtMaSP);
-        txtMaSP.setBounds(340, 520, 228, 30);
+        txtMaSP.setBounds(450, 140, 228, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Tên sản phẩm");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(340, 550, 120, 17);
+        jLabel3.setBounds(450, 210, 120, 17);
 
         txtTenSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtTenSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenSPActionPerformed(evt);
+            }
+        });
         txtTenSP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTenSPKeyReleased(evt);
             }
         });
         jPanel1.add(txtTenSP);
-        txtTenSP.setBounds(340, 580, 228, 30);
+        txtTenSP.setBounds(450, 230, 228, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Loại đồ uống");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(340, 610, 110, 17);
+        jLabel4.setBounds(450, 300, 110, 17);
 
-        cboLoaidouong.setBackground(new java.awt.Color(227, 96, 5));
+        cboLoaidouong.setBackground(new java.awt.Color(225, 193, 144));
         cboLoaidouong.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel1.add(cboLoaidouong);
-        cboLoaidouong.setBounds(388, 640, 180, 30);
+        cboLoaidouong.setBounds(490, 320, 190, 30);
+
+        jPanel5.setBackground(new java.awt.Color(225, 193, 144));
 
         lblHinh.setBackground(new java.awt.Color(204, 204, 255));
-        lblHinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ảnh", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP));
+        lblHinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblHinh.setText("      Click To Donwload Image");
+        lblHinh.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHinhMouseClicked(evt);
@@ -245,31 +255,31 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHinh, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+            .addComponent(lblHinh, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblHinh, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+            .addComponent(lblHinh, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
         );
 
         jPanel1.add(jPanel5);
-        jPanel5.setBounds(27, 463, 244, 301);
+        jPanel5.setBounds(120, 90, 210, 290);
 
         txtGia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel1.add(txtGia);
-        txtGia.setBounds(688, 640, 230, 30);
+        txtGia.setBounds(740, 320, 230, 30);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Giá");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(690, 620, 60, 17);
+        jLabel5.setBounds(740, 300, 60, 17);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Đơn vị");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(690, 490, 70, 17);
+        jLabel6.setBounds(740, 120, 70, 17);
 
-        cboDonvi.setBackground(new java.awt.Color(227, 96, 5));
+        cboDonvi.setBackground(new java.awt.Color(225, 193, 144));
         cboDonvi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cboDonvi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,7 +287,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(cboDonvi);
-        cboDonvi.setBounds(738, 520, 180, 30);
+        cboDonvi.setBounds(790, 140, 180, 30);
 
         btnStart.setBackground(new java.awt.Color(255, 255, 255));
         btnStart.setText("|<");
@@ -287,7 +297,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnStart);
-        btnStart.setBounds(470, 710, 61, 31);
+        btnStart.setBounds(850, 420, 61, 31);
 
         btnPrev.setBackground(new java.awt.Color(255, 255, 255));
         btnPrev.setText("<<");
@@ -297,7 +307,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnPrev);
-        btnPrev.setBounds(560, 710, 61, 32);
+        btnPrev.setBounds(950, 420, 61, 32);
 
         btnnext.setBackground(new java.awt.Color(255, 255, 255));
         btnnext.setText(">>");
@@ -307,7 +317,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnnext);
-        btnnext.setBounds(650, 710, 61, 34);
+        btnnext.setBounds(1080, 420, 61, 34);
 
         btnLast.setBackground(new java.awt.Color(255, 255, 255));
         btnLast.setText(">|");
@@ -317,23 +327,25 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnLast);
-        btnLast.setBounds(740, 710, 61, 34);
+        btnLast.setBounds(1170, 420, 61, 34);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Trạng thái");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(690, 560, 100, 17);
+        jLabel7.setBounds(740, 210, 100, 17);
 
+        rdoksd.setBackground(new java.awt.Color(225, 193, 144));
         buttonGroup1.add(rdoksd);
         rdoksd.setText("Không sử dụng");
         jPanel1.add(rdoksd);
-        rdoksd.setBounds(690, 580, 110, 25);
+        rdoksd.setBounds(740, 230, 110, 25);
 
+        rdosd.setBackground(new java.awt.Color(225, 193, 144));
         buttonGroup1.add(rdosd);
         rdosd.setSelected(true);
         rdosd.setText("sử dụng");
         jPanel1.add(rdosd);
-        rdosd.setBounds(810, 580, 90, 25);
+        rdosd.setBounds(860, 230, 90, 25);
 
         btnThem.setBackground(new java.awt.Color(255, 255, 255));
         btnThem.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
@@ -345,7 +357,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnThem);
-        btnThem.setBounds(990, 470, 101, 34);
+        btnThem.setBounds(1100, 140, 101, 34);
 
         btnXoa.setBackground(new java.awt.Color(255, 255, 255));
         btnXoa.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
@@ -357,7 +369,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnXoa);
-        btnXoa.setBounds(990, 590, 101, 34);
+        btnXoa.setBounds(1100, 260, 101, 34);
 
         btnSua.setBackground(new java.awt.Color(255, 255, 255));
         btnSua.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
@@ -368,7 +380,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnSua);
-        btnSua.setBounds(990, 530, 101, 34);
+        btnSua.setBounds(1100, 200, 101, 34);
 
         tbnLamMoi.setBackground(new java.awt.Color(255, 255, 255));
         tbnLamMoi.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
@@ -379,8 +391,9 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(tbnLamMoi);
-        tbnLamMoi.setBounds(990, 660, 101, 34);
+        tbnLamMoi.setBounds(1100, 320, 101, 34);
 
+        btndonvi.setBackground(new java.awt.Color(225, 193, 144));
         btndonvi.setText("+");
         btndonvi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -388,8 +401,9 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btndonvi);
-        btndonvi.setBounds(340, 640, 41, 30);
+        btndonvi.setBounds(450, 320, 41, 30);
 
+        btnloaidouong.setBackground(new java.awt.Color(225, 193, 144));
         btnloaidouong.setText("+");
         btnloaidouong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -397,16 +411,21 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnloaidouong);
-        btnloaidouong.setBounds(684, 520, 50, 30);
+        btnloaidouong.setBounds(740, 140, 50, 30);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("QUẢN LÝ ĐỒ UỐNG");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(470, 10, 380, 44);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 24, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1302, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -570,6 +589,10 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         new QLDonViDoUongJDialog(null, true).setVisible(true);
         fillcomboDonVi();
     }//GEN-LAST:event_btnloaidouongActionPerformed
+
+    private void txtTenSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenSPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenSPActionPerformed
     
     
     private void filltotableSP(){
@@ -929,6 +952,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cboDonvi;
     private javax.swing.JComboBox<String> cboLoaidouong;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
