@@ -59,7 +59,7 @@ public class main extends javax.swing.JFrame {
         pnscrene = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Cà Phê Ban Mê");
+        setTitle("UPCOFFEE - Cà Phê Thượng Hạng Việt Nam");
 
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
 
