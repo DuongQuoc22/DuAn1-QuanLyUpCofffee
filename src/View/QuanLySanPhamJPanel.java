@@ -233,8 +233,8 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         jPanel1.add(cboLoaidouong);
         cboLoaidouong.setBounds(388, 640, 180, 30);
 
-        jPanel5.setBackground(new java.awt.Color(227, 164, 114));
-
+        lblHinh.setBackground(new java.awt.Color(204, 204, 255));
+        lblHinh.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ảnh", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_TOP));
         lblHinh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblHinhMouseClicked(evt);
@@ -728,7 +728,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
 
     private boolean Checknull() {
         if (txtTenSP.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "tên sản phẩm không để trống");
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên sản phẩm!");
             txtTenSP.requestFocus();
 
             return true;
@@ -738,27 +738,27 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         String tensp = txtTenSP.getText();
         for (int i = 0; i < list.size(); i++) {
             if (id.equalsIgnoreCase(list.get(i).getId_sp())) {
-                JOptionPane.showMessageDialog(this, "trùng khóa chính");
+                JOptionPane.showMessageDialog(this, "Trùng khóa chính");
                 txtMaSP.requestFocus();
                 return true;
             } else if (tensp.equalsIgnoreCase(list.get(i).getTen_sp())) {
-                JOptionPane.showMessageDialog(this, "tên sản phẩm đã tồn tại");
+                JOptionPane.showMessageDialog(this, "Tên sản phẩm đã tồn tại");
                 txtTenSP.requestFocus();
                 return true;
             }
         }
         if (txtGia.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "giá sản phẩm không để trống");
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập giá sản phẩm!");
             txtGia.requestFocus();
             return true;
         } else if (lblHinh.getIcon() == null) {
-            JOptionPane.showMessageDialog(this, "hình không được để trống");
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn hình sản phẩm!");
             return true;
         } else if (txtMaSP.getText().length() < 3) {
-            JOptionPane.showMessageDialog(this, "mã sản phẩm phải trên 2 kí tự");
+            JOptionPane.showMessageDialog(this, "Mã sản phẩm phải trên 2 kí tự");
             return true;
         } else if (txtTenSP.getText().length() < 5) {
-            JOptionPane.showMessageDialog(this, "tên sản phẩm phải trên 5 kí tự");
+            JOptionPane.showMessageDialog(this, "Tên sản phẩm phải trên 5 kí tự");
             return true;
         }
         return false;
@@ -775,10 +775,10 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         } else {
             Pattern p = Pattern.compile("^[0-9]{1,15}$");
             if (!p.matcher(txtGia.getText()).matches()) {
-                JOptionPane.showMessageDialog(this, "nhập sai định dạng giá sản phẩm");
+                JOptionPane.showMessageDialog(this, "Nhập sai định dạng giá sản phẩm");
                 return true;
             } else if (Integer.parseInt(txtGia.getText()) < 0) {
-                JOptionPane.showMessageDialog(this, "giá nhập vào không được âm");
+                JOptionPane.showMessageDialog(this, "Giá nhập vào không được âm");
                 return true;
             }
             return false;
@@ -794,7 +794,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
                 model.addRow(new Object[]{list.get(i).getId_sp(), list.get(i).getTen_sp(),
                         daolsp.selectNameByID(list.get(i).getId_loaiSP()),
                         list.get(i).getGia_sp(), daodv.selectNameByID(list.get(i).getId_donviSP()),
-                        list.get(i).isTrangthai() ? "sử dụng" : "không sử dụng"});
+                        list.get(i).isTrangthai() ? "Sử dụng" : "Không sử dụng"});
             }
         } catch (Exception e) {
         }
@@ -827,7 +827,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             return;
         } else {
             try {
-                if (MsgBox.confirm(this, "bạn có muốn thêm sản phẩm này ?")) {
+                if (MsgBox.confirm(this, "Bạn có muốn thêm sản phẩm này ?")) {
                     //SanPham sp = getInformation();
                     service.insert(getInformation());
                     if (tabs.getSelectedIndex() == 0) {
@@ -838,11 +838,11 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
                         tabs.setSelectedIndex(1);
                     }
                     clearForm();
-                    JOptionPane.showMessageDialog(this, "thêm mới thành công");
+                    JOptionPane.showMessageDialog(this, "Đã thêm");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "lỗi thêm dữ liệu");
+                JOptionPane.showMessageDialog(this, "Ops! Lỗi truy vấn dữ liệu rồi!");
             }
 
         }
@@ -853,17 +853,17 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             return;
         } else {
             try {
-                if (MsgBox.confirm(this, "bạn có muốn sửa sản phẩm ?")) {
+                if (MsgBox.confirm(this, "Bạn có muốn sửa sản phẩm ?")) {
                     SanPham sp = getInformation();
                     DAOSP.update(sp);
                     filltotableSP();
                     filltotableSPKD();
                     clearForm();
                     tabs.setSelectedIndex(0);
-                    JOptionPane.showMessageDialog(this, "sửa thành thành công");
+                    JOptionPane.showMessageDialog(this, "Đã sửa");
                 } else ;
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "sửa không thành công");
+                JOptionPane.showMessageDialog(this, "Ops! Sửa thất bại");
                 e.printStackTrace();
             }
 
@@ -872,9 +872,9 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
 
     private void delete() {
         try {
-            int chon = JOptionPane.showConfirmDialog(this, "bạn có muốn xóa ?");
+            int chon = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa ?");
             if (row == -1) {
-                JOptionPane.showMessageDialog(this, "dữ liệu chưa được hiển thị để xóa");
+                JOptionPane.showMessageDialog(this, "Dữ liệu chưa được hiển thị để xóa!");
                 return;
             }
             if (chon == JOptionPane.YES_OPTION) {
@@ -884,7 +884,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
                 filltotableSP();
                 tabs.setSelectedIndex(1);
                 clearForm();
-                JOptionPane.showMessageDialog(this, "xóa thành công");
+                JOptionPane.showMessageDialog(this, "Yeah! Đã xóa");
             }
 
         } catch (Exception e) {
