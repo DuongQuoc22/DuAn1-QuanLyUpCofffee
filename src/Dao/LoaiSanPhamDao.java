@@ -15,9 +15,9 @@ import Helper.JDBCHeper;
  */
 public class LoaiSanPhamDao implements InterfaceLoaiSanPham{
     
-    String insert = "insert LoaiSanPham(Id_LoaiSP,Tenloai) values(?,?)";
+    String insert = "insert LoaiSanPham(ID_LoaiSP,Tenloai) values(?,?)";
     String selectAll = "select * from LoaiSanPham";
-    String selectByid = "select * from LoaiSanPham where ID_LoaiSP ?";
+    String selectByid = "select * from LoaiSanPham where ID_LoaiSP =?";
     String sqlUpdate  ="update LoaiSanPham set Tenloai= ? where ID_LoaiSP=?";
     String sqlDelete = "delete LoaiSanPham where ID_LoaiSP = ?";
     
@@ -65,12 +65,15 @@ public class LoaiSanPhamDao implements InterfaceLoaiSanPham{
         return list;
     }
     // lay du lieu qua ten
-    public String selectByName(String name){
+    public String selectIdByName(String name){
         String sql = "select * from LoaiSanPham where TenLoai = ?";
-        return selectBySQL(sql, name).get(0).getTenLoai();
+        return selectBySQL(sql, name).get(0).getID_LoaiSP();
     }
-    
-    public LoaiSanPham selectId(String id){
+        // lấy tên sản phẩm thong qua id
+    public String selectNameByID(String id) {
+        return selectBySQL(selectByid, id).get(0).getTenLoai();
+    }
+    public LoaiSanPham selectId_LSP(String id){
         List<LoaiSanPham> list = this.selectBySQL(selectByid, id);
         if(list.isEmpty()){
             return null;

@@ -47,6 +47,6 @@ public class DonViSanPham {
     }
     @Override
     public String toString(){
-        return TenDonvi + ": " +Kichthuoc;
+        return TenDonvi;
     }
 }

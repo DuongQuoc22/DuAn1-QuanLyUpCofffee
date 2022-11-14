@@ -15,66 +15,68 @@ import java.sql.ResultSet;
  */
 public class SanPhamDao implements InterfaceSanPham{
     
-    String sqlInsert = "insert dbo.SanPham(ID_Sanpham,TenSP,Gia,ID_DonviSP,ID_LoaiSP,Trangthai,Hinh) values (?,?,?,?,?,?,?)";
-    
-    String sqlUpdate = "update SanPham set TenSP = ?, Gia =?,ID_DonviSP=?,"
-            +"ID_LoaiSP=?,Trangthai=?, Hinh=? where ID_Sanpham=?";
-    String sqlDelete = "delete from SanPham where ID_Sanpham = ?";
-    
-    String sqlSelectAll = "select * from SanPham";
-    
-    String sqlSelectID = "select * from SanPham where ID_Sanpham = ?";
-    
-    String sqlSelect_Trangthai1 = "select * from dbo.SanPham where Trangthai = 1";
-    String sqlSelect_Trangthai2 = "select * from dbo.SanPham where Trangthai = 0";
-    
-    String update_Trangthai = "update SanPham set Trangthai = 0 where ID_Sanpham = ?";
-    
-    String name_loaiSP = "select * FROM dbo.LoaiSanPham WHERE ID_LoaiSP = ?";
+   String insert = "insert into dbo.SanPham(ID_Sanpham,TenSP,Gia,ID_DonviSP,ID_LoaiSP,Trangthai,Hinh) values(?,?,?,?,?,?,?)";
 
-    String name_donviSP = "select * FROM dbo.DonViSanPham WHERE ID_DonviSP = ?";
+    String update = "update SanPham set TenSP = ? , Gia =? ,ID_DonviSP=?,"
+            + "ID_LoaiSP =?, Trangthai=?  ,Hinh= ? where ID_Sanpham=?";
 
-    String SElECT_SQL_IDSP = "select * FROM dbo.SanPham WHERE Trangthai = 1 AND ID_Sanpham = ?";
-    
-    
+    String delete = "delete from SanPham where ID_Sanpham = ?";
+
+    String seleteAll = "select * from SanPham";
+
+    String selectID = "select * from SanPham where ID_Sanpham = ?";
+
+    String select_Trangthai = "SELECT * FROM dbo.SanPham WHERE Trangthai = 1";
+
+    String select_Trangthai2 = "SELECT * FROM dbo.SanPham WHERE Trangthai = 0";
+
+    String update_trangtrai = "update SanPham set Trangthai = 0 where ID_Sanpham =?";
+
+    String NAME_LOAISP = "SELECT * FROM dbo.LoaiSanPham WHERE ID_LoaiSP = ?";
+
+    String NAME_DVSP = "SELECT * FROM dbo.DonViSanPham WHERE ID_DonviSP = ?";
+
+    String SElECT_SQL_IDSP = "SELECT * FROM dbo.SanPham WHERE Trangthai = 1 AND ID_Sanpham = ?";
+
     @Override
     public void insert(SanPham sp) {
-        JDBCHeper.update(sqlInsert,sp.getId_sp(), sp.getTen_sp(),sp.getGia_sp(),sp.getId_donviSP(),
-                sp.getId_loaiSP(), sp.isTrangthai(),sp.getHinh());
+
+        JDBCHeper.update(insert, sp.getId_sp(), sp.getTen_sp(), sp.getGia_sp(), sp.getId_donviSP(),
+                sp.getId_loaiSP(), sp.isTrangthai(), sp.getHinh());
     }
-    
 
     @Override
     public void update(SanPham sp) {
-        JDBCHeper.update(sqlUpdate, sp.getTen_sp(),sp.getGia_sp(),sp.getId_donviSP(),
-                sp.getId_loaiSP(),sp.isTrangthai(),sp.getHinh(),sp.getId_sp());
+        JDBCHeper.update(update, sp.getTen_sp(), sp.getGia_sp(), sp.getId_donviSP(),
+                sp.getId_loaiSP(), sp.isTrangthai(), sp.getHinh(), sp.getId_sp());
     }
 
     @Override
     public void delete(String id) {
-        JDBCHeper.update(update_Trangthai, id);
+        JDBCHeper.update(update_trangtrai, id);
     }
 
     @Override
     public List<SanPham> selectAll() {
-        return selectBySQL(sqlSelect_Trangthai1);
+        return selectBySQL(select_Trangthai);
+
     }
 
     @Override
     public SanPham selectID(String id) {
-        List<SanPham> list = selectBySQL(sqlSelectID, id);
-        if(list.isEmpty()){
+        List<SanPham> list = selectBySQL(selectID, id);
+        if (list.isEmpty()) {
             return null;
         }
         return list.get(0);
     }
 
     @Override
-    public List<SanPham> selectBySQL(String sql, Object... args) {
-        List<SanPham> list_sp = new ArrayList<>();
+    public List<SanPham> selectBySQL(String sql, Object... agrs) {
+        List<SanPham> list_sanpham = new ArrayList<>();
         try {
-            ResultSet rs = JDBCHeper.query(sql, args);
-            while(rs.next()){
+            ResultSet rs = JDBCHeper.query(sql, agrs);
+            while (rs.next()) {
                 SanPham sp = new SanPham();
                 sp.setId_sp(rs.getString("ID_Sanpham"));
                 sp.setTen_sp(rs.getString("TenSP"));
@@ -83,18 +85,19 @@ public class SanPhamDao implements InterfaceSanPham{
                 sp.setId_donviSP(rs.getString("ID_DonviSP"));
                 sp.setTrangthai(rs.getBoolean("Trangthai"));
                 sp.setHinh(rs.getString("Hinh"));
-                list_sp.add(sp);
+                list_sanpham.add(sp);
             }
             rs.getStatement().getConnection().close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return list_sp;
+        return list_sanpham;
     }
-    
-    public List<SanPham> select_TrangThai(){
-        return selectBySQL(sqlSelect_Trangthai2);
+
+    public List<SanPham> select_Trangthai() {
+        return selectBySQL(select_Trangthai2);
     }
+
     public List<SanPham> selectByKeyword(String keyword, String LoaiSP) {
         String sql = "SELECT * FROM dbo.SanPham WHERE TenSP LIKE ? AND ID_LoaiSP = ? AND Trangthai = 1 ";
         return selectBySQL(sql, "%" + keyword + "%", LoaiSP);
@@ -122,7 +125,7 @@ public class SanPhamDao implements InterfaceSanPham{
     }
 
     public List<SanPham> selectALLL() {
-        return selectBySQL(sqlSelectAll);
+        return selectBySQL(seleteAll);
     }
 
     public List<SanPham> Select_ByName(String name) {  // tìm theo tên sản phẩm
