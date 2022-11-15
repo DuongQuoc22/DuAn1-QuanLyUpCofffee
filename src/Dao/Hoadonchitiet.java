@@ -1,11 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Model;
-
+package Dao;
 public class Hoadonchitiet {
-
     private int ID_Hoadon;
     private String ID_SanPHam;
     private int Soluong;
@@ -14,7 +8,6 @@ public class Hoadonchitiet {
     private boolean trangThai;
     private String lyDoHuy;
     private String ghiChu;
-
     public Hoadonchitiet() {
     }
 
@@ -28,6 +21,7 @@ public class Hoadonchitiet {
         this.lyDoHuy = lyDoHuy;
         this.ghiChu = ghiChu;
     }
+
 
     public int getID_Hoadon() {
         return ID_Hoadon;
@@ -92,5 +86,7 @@ public class Hoadonchitiet {
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
     }
-
+    
+    
+    
 }
