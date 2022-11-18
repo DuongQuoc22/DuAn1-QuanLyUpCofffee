@@ -4,7 +4,7 @@
  */
 package Dao;
 
-import Helper.JDBCHeper;
+import Helper.JDBCHelper;
 import Model.SanPham;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,19 +41,19 @@ public class SanPhamDao implements InterfaceSanPham{
     @Override
     public void insert(SanPham sp) {
 
-        JDBCHeper.update(insert, sp.getId_sp(), sp.getTen_sp(), sp.getGia_sp(), sp.getId_donviSP(),
+        JDBCHelper.update(insert, sp.getId_sp(), sp.getTen_sp(), sp.getGia_sp(), sp.getId_donviSP(),
                 sp.getId_loaiSP(), sp.isTrangthai(), sp.getHinh());
     }
 
     @Override
     public void update(SanPham sp) {
-        JDBCHeper.update(update, sp.getTen_sp(), sp.getGia_sp(), sp.getId_donviSP(),
+        JDBCHelper.update(update, sp.getTen_sp(), sp.getGia_sp(), sp.getId_donviSP(),
                 sp.getId_loaiSP(), sp.isTrangthai(), sp.getHinh(), sp.getId_sp());
     }
 
     @Override
     public void delete(String id) {
-        JDBCHeper.update(update_trangtrai, id);
+        JDBCHelper.update(update_trangtrai, id);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class SanPhamDao implements InterfaceSanPham{
     public List<SanPham> selectBySQL(String sql, Object... agrs) {
         List<SanPham> list_sanpham = new ArrayList<>();
         try {
-            ResultSet rs = JDBCHeper.query(sql, agrs);
+            ResultSet rs = JDBCHelper.query(sql, agrs);
             while (rs.next()) {
                 SanPham sp = new SanPham();
                 sp.setId_sp(rs.getString("ID_Sanpham"));
@@ -114,7 +114,7 @@ public class SanPhamDao implements InterfaceSanPham{
     public int select_Max_id_java() {
         try {
             String sql = "select max(cast(substring(ID_Sanpham,3,LEN(ID_Sanpham))as int)) from  SanPham ";
-            ResultSet rs = JDBCHeper.query(sql);
+            ResultSet rs = JDBCHelper.query(sql);
             while (rs.next()) {
                 return rs.getInt(1);
             }

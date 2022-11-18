@@ -5,7 +5,7 @@
 package Dao;
 import Model.DonViSanPham;
 import java.util.*;
-import Helper.JDBCHeper;
+import Helper.JDBCHelper;
 import java.sql.ResultSet;
 
 /**
@@ -22,17 +22,17 @@ public class DonViSanPhamDao implements InterfaceDonViSanPham{
     
     @Override
     public void insert(DonViSanPham dv) {
-        JDBCHeper.update(insert, dv.getID_DonviSP(), dv.getTenDonvi(), dv.getKichthuoc());
+        JDBCHelper.update(insert, dv.getID_DonviSP(), dv.getTenDonvi(), dv.getKichthuoc());
     }
 
     @Override
     public void update(DonViSanPham dv) {
-        JDBCHeper.update(sqlUpdate, dv.getTenDonvi(), dv.getKichthuoc(), dv.getID_DonviSP());
+        JDBCHelper.update(sqlUpdate, dv.getTenDonvi(), dv.getKichthuoc(), dv.getID_DonviSP());
     }
 
     @Override
     public void delete(String id) {
-        JDBCHeper.update(sqlDelete, id);
+        JDBCHelper.update(sqlDelete, id);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class DonViSanPhamDao implements InterfaceDonViSanPham{
     public List<DonViSanPham> selectBySQL(String sql, Object... agrs) {
         List<DonViSanPham> list = new ArrayList<>();
         try {
-            ResultSet rs = JDBCHeper.query(sql, agrs);
+            ResultSet rs = JDBCHelper.query(sql, agrs);
             while (rs.next()) {
                 DonViSanPham dv = new DonViSanPham();
                 dv.setID_DonviSP(rs.getString(1));
@@ -88,7 +88,7 @@ public class DonViSanPhamDao implements InterfaceDonViSanPham{
         String sql = "select max(cast(substring(ID_DonviSP,3,LEN(ID_DonviSP))as int)) from  DonViSanPham";
         try {
 
-            ResultSet rs = JDBCHeper.query(sql);
+            ResultSet rs = JDBCHelper.query(sql);
             while (rs.next()) {
                 return rs.getInt(1);
 

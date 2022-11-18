@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Model;
 
-public class Hoadonchitiet {
+public class HoaDonChiTiet {
 
     private int ID_Hoadon;
     private String ID_SanPHam;
@@ -15,10 +12,10 @@ public class Hoadonchitiet {
     private String lyDoHuy;
     private String ghiChu;
 
-    public Hoadonchitiet() {
+    public HoaDonChiTiet() {
     }
 
-    public Hoadonchitiet(int ID_Hoadon, String ID_SanPHam, int Soluong, int gia, int tongGia, boolean trangThai, String lyDoHuy, String ghiChu) {
+    public HoaDonChiTiet(int ID_Hoadon, String ID_SanPHam, int Soluong, int gia, int tongGia, boolean trangThai, String lyDoHuy, String ghiChu) {
         this.ID_Hoadon = ID_Hoadon;
         this.ID_SanPHam = ID_SanPHam;
         this.Soluong = Soluong;

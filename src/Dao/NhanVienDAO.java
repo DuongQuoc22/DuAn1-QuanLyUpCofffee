@@ -6,7 +6,7 @@
 package Dao;
 
 import Model.NhanVien;
-import Helper.JDBCHeper;
+import Helper.JDBCHelper;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -30,19 +30,19 @@ public class NhanVienDAO implements InterfaceNhanVien {
 
     @Override
     public void insert(NhanVien Entity) {
-        JDBCHeper.update(INSERT_SQL, Entity.getId_Nhanvien(), Entity.getTenNV(), Entity.isGender(), Entity.getNgaysinh(),
+        JDBCHelper.update(INSERT_SQL, Entity.getId_Nhanvien(), Entity.getTenNV(), Entity.isGender(), Entity.getNgaysinh(),
                 Entity.getDiaChi(), Entity.getEmail(), Entity.getSDT(), Entity.getUserName(), Entity.getPass(), Entity.isVaiTro(), Entity.isTrangThai(), Entity.getHinh());
     }
 
     @Override
     public void update(NhanVien Entity) {
-        JDBCHeper.update(UPDATE_SQL, Entity.getTenNV(), Entity.isGender(), Entity.getNgaysinh(), Entity.getDiaChi(), Entity.getEmail(),
+        JDBCHelper.update(UPDATE_SQL, Entity.getTenNV(), Entity.isGender(), Entity.getNgaysinh(), Entity.getDiaChi(), Entity.getEmail(),
                 Entity.getSDT(), Entity.getUserName(), Entity.getPass(), Entity.isVaiTro(), Entity.isTrangThai(), Entity.getHinh(), Entity.getId_Nhanvien());
     }
 
     @Override
     public void delete(String id) {
-        JDBCHeper.update(DELETE_SQL, id);
+        JDBCHelper.update(DELETE_SQL, id);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class NhanVienDAO implements InterfaceNhanVien {
     public List<NhanVien> selectBySql(String sql, Object... args) {
         List<NhanVien> list = new ArrayList<>();
         try {
-            ResultSet rs = JDBCHeper.query(sql, args);
+            ResultSet rs = JDBCHelper.query(sql, args);
             while (rs.next()) {
                 NhanVien Entity = new NhanVien();
                 Entity.setId_Nhanvien(rs.getString("ID_Nhanvien"));
@@ -112,7 +112,7 @@ public class NhanVienDAO implements InterfaceNhanVien {
     public int select_Max_id_java() {
         try {
             String sql = "select max(cast(substring(ID_Nhanvien,3,LEN(ID_Nhanvien))as int)) from  NhanVien ";
-            ResultSet rs = JDBCHeper.query(sql);
+            ResultSet rs = JDBCHelper.query(sql);
             while (rs.next()) {
                 return rs.getInt(1);
             }
@@ -136,7 +136,7 @@ public class NhanVienDAO implements InterfaceNhanVien {
 
         try {
             String sql_email = "select Email from nhanvien where Email = '" + maill + "'";
-            ResultSet rs = JDBCHeper.query(sql_email);
+            ResultSet rs = JDBCHelper.query(sql_email);
             while (rs.next()) {
                 return rs.getString(1);
             }

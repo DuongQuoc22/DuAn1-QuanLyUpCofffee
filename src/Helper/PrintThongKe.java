@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Helper;
 
 
 //import DAO.BanChitietDAO;
 import Dao.HoaDonDAO;
-import Model.Hoadon;
+import Model.HoaDon;
 import com.itextpdf.text.Chapter;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -22,7 +19,6 @@ import com.itextpdf.text.pdf.CMYKColor;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-
 import java.awt.Color;
 import java.io.File;
 import java.io.FileOutputStream;

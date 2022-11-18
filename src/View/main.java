@@ -4,7 +4,6 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
 public class main extends javax.swing.JFrame {
 
     public main() {
@@ -14,7 +13,7 @@ public class main extends javax.swing.JFrame {
         new DangnhapJDialog(this, true).setVisible(true);
         setExtendedState(this.MAXIMIZED_BOTH);
         setColor(lblTrangchu);
-        // showPanel(new TrangchuJPanel());
+        showPanel(new TrangchuJPanel());
     }
 
     @SuppressWarnings("unchecked")
@@ -37,7 +36,7 @@ public class main extends javax.swing.JFrame {
         lblNhanVien = new javax.swing.JLabel();
         pnThongke = new javax.swing.JPanel();
         lblThongke = new javax.swing.JLabel();
-        pnGiagia = new javax.swing.JPanel();
+        pnGiamGia = new javax.swing.JPanel();
         lblGiamGia = new javax.swing.JLabel();
         pnscrene = new javax.swing.JPanel();
 
@@ -67,6 +66,11 @@ public class main extends javax.swing.JFrame {
         lblTrangchu.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         lblTrangchu.setForeground(new java.awt.Color(255, 255, 255));
         lblTrangchu.setText("Trang chủ");
+        lblTrangchu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTrangchuMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnTrangChuLayout = new javax.swing.GroupLayout(pnTrangChu);
         pnTrangChu.setLayout(pnTrangChuLayout);
@@ -75,7 +79,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnTrangChuLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(lblTrangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         pnTrangChuLayout.setVerticalGroup(
             pnTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,6 +102,11 @@ public class main extends javax.swing.JFrame {
         lblBanHang.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         lblBanHang.setForeground(new java.awt.Color(255, 255, 255));
         lblBanHang.setText("Bán hàng");
+        lblBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBanHangMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnBanHangLayout = new javax.swing.GroupLayout(pnBanHang);
         pnBanHang.setLayout(pnBanHangLayout);
@@ -106,7 +115,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnBanHangLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(lblBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         pnBanHangLayout.setVerticalGroup(
             pnBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,6 +138,11 @@ public class main extends javax.swing.JFrame {
         lblSanPham.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         lblSanPham.setForeground(new java.awt.Color(255, 255, 255));
         lblSanPham.setText("Sản Phẩm");
+        lblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSanPhamMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnSanPhamLayout = new javax.swing.GroupLayout(pnSanPham);
         pnSanPham.setLayout(pnSanPhamLayout);
@@ -136,8 +150,8 @@ public class main extends javax.swing.JFrame {
             pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSanPhamLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(lblSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addComponent(lblSanPham)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         pnSanPhamLayout.setVerticalGroup(
             pnSanPhamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,6 +174,11 @@ public class main extends javax.swing.JFrame {
         lblHoaDon.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         lblHoaDon.setForeground(new java.awt.Color(255, 255, 255));
         lblHoaDon.setText("Hóa đơn");
+        lblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHoaDonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnHoaDonLayout = new javax.swing.GroupLayout(pnHoaDon);
         pnHoaDon.setLayout(pnHoaDonLayout);
@@ -168,7 +187,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnHoaDonLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(lblHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         pnHoaDonLayout.setVerticalGroup(
             pnHoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,6 +210,11 @@ public class main extends javax.swing.JFrame {
         lblNhanVien.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         lblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         lblNhanVien.setText("Nhân viên");
+        lblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNhanVienMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnNhanVienLayout = new javax.swing.GroupLayout(pnNhanVien);
         pnNhanVien.setLayout(pnNhanVienLayout);
@@ -199,7 +223,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnNhanVienLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(lblNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         pnNhanVienLayout.setVerticalGroup(
             pnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,6 +246,11 @@ public class main extends javax.swing.JFrame {
         lblThongke.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         lblThongke.setForeground(new java.awt.Color(255, 255, 255));
         lblThongke.setText("Thống kê");
+        lblThongke.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblThongkeMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnThongkeLayout = new javax.swing.GroupLayout(pnThongke);
         pnThongke.setLayout(pnThongkeLayout);
@@ -230,7 +259,7 @@ public class main extends javax.swing.JFrame {
             .addGroup(pnThongkeLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(lblThongke, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         pnThongkeLayout.setVerticalGroup(
             pnThongkeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,56 +271,61 @@ public class main extends javax.swing.JFrame {
 
         jPanel1.add(pnThongke);
 
-        pnGiagia.setBackground(new java.awt.Color(222, 162, 110));
-        pnGiagia.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        pnGiagia.setPreferredSize(new java.awt.Dimension(260, 86));
-        pnGiagia.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnGiamGia.setBackground(new java.awt.Color(222, 162, 110));
+        pnGiamGia.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        pnGiamGia.setPreferredSize(new java.awt.Dimension(260, 86));
+        pnGiamGia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnGiagiaMouseClicked(evt);
+                pnGiamGiaMouseClicked(evt);
             }
         });
 
         lblGiamGia.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         lblGiamGia.setForeground(new java.awt.Color(255, 255, 255));
         lblGiamGia.setText("Giảm giá");
+        lblGiamGia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGiamGiaMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout pnGiagiaLayout = new javax.swing.GroupLayout(pnGiagia);
-        pnGiagia.setLayout(pnGiagiaLayout);
-        pnGiagiaLayout.setHorizontalGroup(
-            pnGiagiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnGiagiaLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnGiamGiaLayout = new javax.swing.GroupLayout(pnGiamGia);
+        pnGiamGia.setLayout(pnGiamGiaLayout);
+        pnGiamGiaLayout.setHorizontalGroup(
+            pnGiamGiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnGiamGiaLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(lblGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
-        pnGiagiaLayout.setVerticalGroup(
-            pnGiagiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGiagiaLayout.createSequentialGroup()
+        pnGiamGiaLayout.setVerticalGroup(
+            pnGiamGiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGiamGiaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblGiamGia, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel1.add(pnGiagia);
+        jPanel1.add(pnGiamGia);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(42, 42, 42)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel4);
@@ -324,7 +358,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblSanPham);
         resetColor(lblThongke);
         resetColor(lblGiamGia);
-        //showPanel(new TrangchuJPanel());
+        showPanel(new TrangchuJPanel());
     }//GEN-LAST:event_pnTrangChuMouseClicked
 
     private void pnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnSanPhamMouseClicked
@@ -358,7 +392,7 @@ public class main extends javax.swing.JFrame {
         resetColor(lblTrangchu);
         resetColor(lblThongke);
         resetColor(lblGiamGia);
-        //showPanel(new QuanLyBanHangJPanel());
+        showPanel(new QuanLyBanHangJPanel());
     }//GEN-LAST:event_pnBanHangMouseClicked
 
     private void pnHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnHoaDonMouseClicked
@@ -384,7 +418,7 @@ public class main extends javax.swing.JFrame {
         // showPanel(new MainThongKeJPanel());
     }//GEN-LAST:event_pnThongkeMouseClicked
 
-    private void pnGiagiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGiagiaMouseClicked
+    private void pnGiamGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnGiamGiaMouseClicked
         // TODO add your handling code here:
         setColor(lblGiamGia);
         resetColor(lblBanHang);
@@ -394,37 +428,91 @@ public class main extends javax.swing.JFrame {
         resetColor(lblHoaDon);
         resetColor(lblThongke);
         //showPanel(new GiamGiaSanPhamJPanel());
-    }//GEN-LAST:event_pnGiagiaMouseClicked
+    }//GEN-LAST:event_pnGiamGiaMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void lblTrangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTrangchuMouseClicked
+        // TODO add your handling code here:
+        setColor(lblTrangchu);
+        resetColor(lblHoaDon);
+        resetColor(lblBanHang);
+        resetColor(lblNhanVien);
+        resetColor(lblSanPham);
+        resetColor(lblThongke);
+        resetColor(lblGiamGia);
+        showPanel(new TrangchuJPanel());
+    }//GEN-LAST:event_lblTrangchuMouseClicked
+
+    private void lblBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBanHangMouseClicked
+        // TODO add your handling code here:
+        setColor(lblBanHang);
+        resetColor(lblHoaDon);
+        resetColor(lblNhanVien);
+        resetColor(lblSanPham);
+        resetColor(lblTrangchu);
+        resetColor(lblThongke);
+        resetColor(lblGiamGia);
+        showPanel(new QuanLyBanHangJPanel());
+    }//GEN-LAST:event_lblBanHangMouseClicked
+
+    private void lblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseClicked
+        // TODO add your handling code here:
+        setColor(lblSanPham);
+        resetColor(lblHoaDon);
+        resetColor(lblBanHang);
+        resetColor(lblNhanVien);
+        resetColor(lblTrangchu);
+        resetColor(lblThongke);
+        showPanel(new QuanLySanPhamJPanel());
+    }//GEN-LAST:event_lblSanPhamMouseClicked
+
+    private void lblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHoaDonMouseClicked
+        // TODO add your handling code here:
+        setColor(lblHoaDon);
+        resetColor(lblBanHang);
+        resetColor(lblNhanVien);
+        resetColor(lblSanPham);
+        resetColor(lblTrangchu);
+        resetColor(lblThongke);
+        showPanel(new QuanLyHoaDonJPanel());
+    }//GEN-LAST:event_lblHoaDonMouseClicked
+
+    private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
+        // TODO add your handling code here:
+        setColor(lblNhanVien);
+        resetColor(lblHoaDon);
+        resetColor(lblBanHang);
+        resetColor(lblSanPham);
+        resetColor(lblTrangchu);
+        resetColor(lblThongke);
+        //showPanel(new QuanLyNhanvienJPanel());
+    }//GEN-LAST:event_lblNhanVienMouseClicked
+
+    private void lblThongkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblThongkeMouseClicked
+        // TODO add your handling code here:
+        setColor(lblThongke);
+        resetColor(lblBanHang);
+        resetColor(lblNhanVien);
+        resetColor(lblSanPham);
+        resetColor(lblTrangchu);
+        resetColor(lblHoaDon);
+        resetColor(lblGiamGia);
+        // showPanel(new MainThongKeJPanel());
+    }//GEN-LAST:event_lblThongkeMouseClicked
+
+    private void lblGiamGiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGiamGiaMouseClicked
+        // TODO add your handling code here:
+        setColor(lblGiamGia);
+        resetColor(lblBanHang);
+        resetColor(lblNhanVien);
+        resetColor(lblSanPham);
+        resetColor(lblTrangchu);
+        resetColor(lblHoaDon);
+        resetColor(lblThongke);
+        //showPanel(new GiamGiaSanPhamJPanel());
+    }//GEN-LAST:event_lblGiamGiaMouseClicked
+
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new main().setVisible(true);
@@ -445,7 +533,7 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel lblThongke;
     private javax.swing.JLabel lblTrangchu;
     private javax.swing.JPanel pnBanHang;
-    private javax.swing.JPanel pnGiagia;
+    private javax.swing.JPanel pnGiamGia;
     private javax.swing.JPanel pnHoaDon;
     private javax.swing.JPanel pnNhanVien;
     private javax.swing.JPanel pnSanPham;

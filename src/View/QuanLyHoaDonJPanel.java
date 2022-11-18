@@ -3,7 +3,7 @@ package View;
 import Services.SerHoaDon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import Model.Hoadon;
+import Model.HoaDon;
 import Model.NhanVien;
 import javax.swing.DefaultComboBoxModel;
 
@@ -11,7 +11,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
 
     SerHoaDon sv = new SerHoaDon();
-    Hoadon hd = new Hoadon();
+    HoaDon hd = new HoaDon();
 
     public QuanLyHoaDonJPanel() {
         initComponents();
@@ -352,7 +352,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
         int a = (int) tblHoadon.getValueAt(index, 0);
 
-        HoadonchitietJDialog hd = new HoadonchitietJDialog(a);
+        HoaDonChiTietJDialog hd = new HoaDonChiTietJDialog(a);
         hd.setVisible(true);
     }//GEN-LAST:event_tblHoadonMouseClicked
 
@@ -361,7 +361,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
 
         int x = (int) tblhuydon.getValueAt(index, 0);
 
-        HoadonchitietJDialog hd = new HoadonchitietJDialog(x);
+        HoaDonChiTietJDialog hd = new HoaDonChiTietJDialog(x);
         hd.setVisible(true);
     }//GEN-LAST:event_tblhuydonMouseClicked
 

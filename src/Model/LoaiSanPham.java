@@ -1,20 +1,20 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Model;
 
-import java.util.Date;
-
 /**
  *
- * @author Admin
+ * @author top1z
  */
 public class LoaiSanPham {
-        private String ID_LoaiSP;
-        private String TenLoai;
-
-    public LoaiSanPham() {
+    private String ID_LoaiSP ;
+    private String TenLoai ;
+    public LoaiSanPham(){
+        
+        
     }
 
     public LoaiSanPham(String ID_LoaiSP, String TenLoai) {
@@ -37,8 +37,10 @@ public class LoaiSanPham {
     public void setTenLoai(String TenLoai) {
         this.TenLoai = TenLoai;
     }
-        @Override
-        public String toString(){
-            return TenLoai;
-        }
+
+    @Override
+    public String toString() {
+        return  TenLoai ;
+    }
+    
 }

@@ -2,17 +2,15 @@ package View;
 
 import Services.SerHoaDonChiTiet;
 
-public class HoadonchitietJDialog extends javax.swing.JDialog {
+public class HoaDonChiTietJDialog extends javax.swing.JDialog {
 
     SerHoaDonChiTiet sv = new SerHoaDonChiTiet();
 
-    public HoadonchitietJDialog(int a) {
+    public HoaDonChiTietJDialog(int a) {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
         sv.filltotablehoadonchitiet(a);
-
     }
 
     @SuppressWarnings("unchecked")

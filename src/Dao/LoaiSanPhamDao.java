@@ -8,7 +8,7 @@ package Dao;
 import Model.*;
 import java.util.*;
 import java.sql.ResultSet;
-import Helper.JDBCHeper;
+import Helper.JDBCHelper;
 /**
  *
  * @author Admin
@@ -24,17 +24,17 @@ public class LoaiSanPhamDao implements InterfaceLoaiSanPham{
     
     @Override
     public void insert(LoaiSanPham lsp) {
-        JDBCHeper.update(insert, lsp.getID_LoaiSP(),lsp.getTenLoai());
+        JDBCHelper.update(insert, lsp.getID_LoaiSP(),lsp.getTenLoai());
     }
 
     @Override
     public void update(LoaiSanPham lsp) {
-        JDBCHeper.update(sqlUpdate, lsp.getTenLoai(), lsp.getID_LoaiSP());
+        JDBCHelper.update(sqlUpdate, lsp.getTenLoai(), lsp.getID_LoaiSP());
     }
 
     @Override
     public void delete(String id) {
-        JDBCHeper.update(sqlDelete, id);
+        JDBCHelper.update(sqlDelete, id);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class LoaiSanPhamDao implements InterfaceLoaiSanPham{
     public List<LoaiSanPham> selectBySQL(String sql, Object... agrs) {
         List<LoaiSanPham> list = new ArrayList<>();
         try {
-            ResultSet rs = JDBCHeper.query(sql, agrs);
+            ResultSet rs = JDBCHelper.query(sql, agrs);
             while (rs.next()) {
                 LoaiSanPham lsp = new LoaiSanPham();
                 lsp.setID_LoaiSP(rs.getString(1));
@@ -85,7 +85,7 @@ public class LoaiSanPhamDao implements InterfaceLoaiSanPham{
         String sql = "select max(cast(substring(ID_LoaiSP,4,LEN(ID_LoaiSP))as int)) from  LoaiSanPham";
         try {
 
-            ResultSet rs = JDBCHeper.query(sql);
+            ResultSet rs = JDBCHelper.query(sql);
             while (rs.next()) {
                 return rs.getInt(1);
 

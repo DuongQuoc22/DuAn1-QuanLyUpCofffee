@@ -5,8 +5,8 @@
  */
 package Dao;
 
-import Model.Hoadonchitiet;
-import Helper.JDBCHeper;
+import Model.HoaDonChiTiet;
+import Helper.JDBCHelper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author HP
  */
-public class HoadonchitietDAO implements InterfaceHoadonchittiet {
+public class HoaDonChiTietDAO implements InterfaceHoaDonThitTiet {
 
     String INSERT_SQL = "INSERT dbo.HoaDonChiTiet VALUES (?,?,?,?,?,?,?,?)";
     String UPDATE_SQL_TrangThai = "UPDATE dbo.HoaDonChiTiet SET TTthanhtoan = ?  WHERE ID_HoaDon = ? AND ID_SanPham = ?";
@@ -41,18 +41,18 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
     String SELECT_BY_ID_SQL_thao = "SELECT * FROM dbo.HoaDonChiTiet WHERE ID_HoaDon = ?";
 
     @Override
-    public void insert(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(INSERT_SQL, Entity.getID_Hoadon(), Entity.getID_SanPHam(), Entity.getSoluong(), Entity.getGia(), Entity.getTongGia(), Entity.isTrangThai(), Entity.getLyDoHuy(), Entity.getGhiChu());
+    public void insert(HoaDonChiTiet Entity) {
+        Helper.JDBCHelper.update(INSERT_SQL, Entity.getID_Hoadon(), Entity.getID_SanPHam(), Entity.getSoluong(), Entity.getGia(), Entity.getTongGia(), Entity.isTrangThai(), Entity.getLyDoHuy(), Entity.getGhiChu());
     }
 
     @Override
-    public void delete(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(UPDATE_SQL_TrangThai, Entity.isTrangThai(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
+    public void delete(HoaDonChiTiet Entity) {
+        Helper.JDBCHelper.update(UPDATE_SQL_TrangThai, Entity.isTrangThai(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     @Override
-    public Hoadonchitiet selectById(int id, String MaSP) {
-        List<Hoadonchitiet> list = this.selectBySql(SELECT_BY_ID_SQL, id, MaSP);
+    public HoaDonChiTiet selectById(int id, String MaSP) {
+        List<HoaDonChiTiet> list = this.selectBySql(SELECT_BY_ID_SQL, id, MaSP);
         if (list.isEmpty()) {
             return null;
         }
@@ -60,17 +60,17 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
     }
 
     @Override
-    public List<Hoadonchitiet> selectAll() {
+    public List<HoaDonChiTiet> selectAll() {
         return this.selectBySql(SELECT_ALL_SQL);
     }
 
     @Override
-    public List<Hoadonchitiet> selectBySql(String sql, Object... args) {
-        List<Hoadonchitiet> list = new ArrayList<>();
+    public List<HoaDonChiTiet> selectBySql(String sql, Object... args) {
+        List<HoaDonChiTiet> list = new ArrayList<>();
         try {
-            ResultSet rs = JDBCHeper.query(sql, args);
+            ResultSet rs = JDBCHelper.query(sql, args);
             while (rs.next()) {
-                Hoadonchitiet Entity = new Hoadonchitiet();
+                HoaDonChiTiet Entity = new HoaDonChiTiet();
                 Entity.setID_Hoadon(rs.getInt("ID_HoaDon"));
                 Entity.setID_SanPHam(rs.getString("ID_SanPham"));
                 Entity.setSoluong(rs.getInt("Soluong"));
@@ -88,43 +88,43 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
         }
     }
 
-    public List<Hoadonchitiet> selectByIDBan(int idBan) {
+    public List<HoaDonChiTiet> selectByIDBan(int idBan) {
         return selectBySql(SELECT_ALL_BY_ID_Ban, idBan);
     }
 
     @Override
-    public List<Hoadonchitiet> selectByIdHD_TT1(int idHD, String idSP) {
+    public List<HoaDonChiTiet> selectByIdHD_TT1(int idHD, String idSP) {
         return selectBySql(SELECT_BY_ID_MaHD_TT1, idHD, idSP);
     }
 
     @Override
-    public List<Hoadonchitiet> selectByIdHD_TT0(int idHD, String idSP) {
+    public List<HoaDonChiTiet> selectByIdHD_TT0(int idHD, String idSP) {
         return selectBySql(SELECT_BY_ID_MaHD_TT0, idHD, idSP);
     }
 
     @Override
-    public void update_TT(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(UPDATE_SQL_TrangThai, Entity.isTrangThai(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
+    public void update_TT(HoaDonChiTiet Entity) {
+        Helper.JDBCHelper.update(UPDATE_SQL_TrangThai, Entity.isTrangThai(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     @Override
-    public void update_SL(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(UPDATE_SQL_soluong, Entity.getSoluong(), Entity.getTongGia(), Entity.getGhiChu(), Entity.getGia(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
+    public void update_SL(HoaDonChiTiet Entity) {
+        Helper.JDBCHelper.update(UPDATE_SQL_soluong, Entity.getSoluong(), Entity.getTongGia(), Entity.getGhiChu(), Entity.getGia(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     @Override
-    public void update_LD(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(UPDATE_LY_DO_HUY, Entity.getLyDoHuy(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
+    public void update_LD(HoaDonChiTiet Entity) {
+        Helper.JDBCHelper.update(UPDATE_LY_DO_HUY, Entity.getLyDoHuy(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
-    public void update_ghichu(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(UPDATE_Ghi_chu, Entity.getGhiChu(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
+    public void update_ghichu(HoaDonChiTiet Entity) {
+        Helper.JDBCHelper.update(UPDATE_Ghi_chu, Entity.getGhiChu(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     @Override
     public int selectCount(String sql, Object... args) {
         try {
-            ResultSet rs = JDBCHeper.query(sql, args);
+            ResultSet rs = JDBCHelper.query(sql, args);
             int sl = 0;
             while (rs.next()) {
                 sl = rs.getInt("Soluongdonhuy");
@@ -141,19 +141,19 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
         return selectCount(selcecCountSPhuy, idhd);
     }
 
-    public List<Hoadonchitiet> selectById1(int id) {
+    public List<HoaDonChiTiet> selectById1(int id) {
         return this.selectBySql(SELECT_BY_ID_SQL_thao, id);
     }
 
-    public List<Hoadonchitiet> selectByIdHD(int id) {
+    public List<HoaDonChiTiet> selectByIdHD(int id) {
         return this.selectBySql(SELECT_ALL_BY_ID_HD, id);
     }
 
     public void updateIDHOADON(int macu, int mamoi, String iSP) {
-        Helper.JDBCHeper.update(UPDATE_SQL_IDHoaDon, mamoi, macu, iSP);
+        Helper.JDBCHelper.update(UPDATE_SQL_IDHoaDon, mamoi, macu, iSP);
     }
 
     public void deletehoadonct(int mahd, String masp) {
-        Helper.JDBCHeper.update(DELETE_SQL, mahd, masp);
+        Helper.JDBCHelper.update(DELETE_SQL, mahd, masp);
     }
 }
