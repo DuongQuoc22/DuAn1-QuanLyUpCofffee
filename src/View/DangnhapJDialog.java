@@ -7,7 +7,7 @@ package View;
 
 import Dao.*;
 import Model.*;
-import Helper.Auth;
+import JDBCHelper.Auth;
 
 import javax.swing.JOptionPane;
 

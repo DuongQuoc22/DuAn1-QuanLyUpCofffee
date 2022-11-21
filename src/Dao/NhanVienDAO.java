@@ -6,7 +6,7 @@
 package Dao;
 
 import Model.NhanVien;
-import Helper.JDBCHeper;
+import JDBCHelper.JDBCHeper;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;

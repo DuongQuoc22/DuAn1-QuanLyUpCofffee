@@ -6,7 +6,7 @@
 package Dao;
 
 import Model.Hoadonchitiet;
-import Helper.JDBCHeper;
+import JDBCHelper.JDBCHeper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +42,12 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
 
     @Override
     public void insert(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(INSERT_SQL, Entity.getID_Hoadon(), Entity.getID_SanPHam(), Entity.getSoluong(), Entity.getGia(), Entity.getTongGia(), Entity.isTrangThai(), Entity.getLyDoHuy(), Entity.getGhiChu());
+        JDBCHelper.JDBCHeper.update(INSERT_SQL, Entity.getID_Hoadon(), Entity.getID_SanPHam(), Entity.getSoluong(), Entity.getGia(), Entity.getTongGia(), Entity.isTrangThai(), Entity.getLyDoHuy(), Entity.getGhiChu());
     }
 
     @Override
     public void delete(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(UPDATE_SQL_TrangThai, Entity.isTrangThai(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
+        JDBCHelper.JDBCHeper.update(UPDATE_SQL_TrangThai, Entity.isTrangThai(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     @Override
@@ -104,21 +104,21 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
 
     @Override
     public void update_TT(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(UPDATE_SQL_TrangThai, Entity.isTrangThai(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
+        JDBCHelper.JDBCHeper.update(UPDATE_SQL_TrangThai, Entity.isTrangThai(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     @Override
     public void update_SL(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(UPDATE_SQL_soluong, Entity.getSoluong(), Entity.getTongGia(), Entity.getGhiChu(), Entity.getGia(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
+        JDBCHelper.JDBCHeper.update(UPDATE_SQL_soluong, Entity.getSoluong(), Entity.getTongGia(), Entity.getGhiChu(), Entity.getGia(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     @Override
     public void update_LD(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(UPDATE_LY_DO_HUY, Entity.getLyDoHuy(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
+        JDBCHelper.JDBCHeper.update(UPDATE_LY_DO_HUY, Entity.getLyDoHuy(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     public void update_ghichu(Hoadonchitiet Entity) {
-        Helper.JDBCHeper.update(UPDATE_Ghi_chu, Entity.getGhiChu(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
+        JDBCHelper.JDBCHeper.update(UPDATE_Ghi_chu, Entity.getGhiChu(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     @Override
@@ -150,10 +150,10 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
     }
 
     public void updateIDHOADON(int macu, int mamoi, String iSP) {
-        Helper.JDBCHeper.update(UPDATE_SQL_IDHoaDon, mamoi, macu, iSP);
+        JDBCHelper.JDBCHeper.update(UPDATE_SQL_IDHoaDon, mamoi, macu, iSP);
     }
 
     public void deletehoadonct(int mahd, String masp) {
-        Helper.JDBCHeper.update(DELETE_SQL, mahd, masp);
+        JDBCHelper.JDBCHeper.update(DELETE_SQL, mahd, masp);
     }
 }
