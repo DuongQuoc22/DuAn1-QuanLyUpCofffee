@@ -57,6 +57,35 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
     private void init(){
         fillcomboboxLoaiSP();
         fillcomboDonVi();
+        if(Auth.isManager()== false){
+            btnThem.setVisible(false);
+            btnSua.setVisible(false);
+            btnXoa.setVisible(false);
+            tbnLamMoi.setVisible(false);
+            txtTenSP.setEditable(false);
+            txtMaSP.setEditable(false);
+            txtGia.setEditable(false);
+            btndonvi.setEnabled(false);
+            btnloaidouong.setEnabled(false);
+            cboDonvi.setEnabled(false);
+            cboLoaidouong.setEnabled(false);
+            rdoksd.setEnabled(false);
+            rdosd.setEnabled(false);         
+        }else{
+            btnThem.setVisible(true);
+            btnSua.setVisible(true);
+            btnXoa.setVisible(true);
+            tbnLamMoi.setVisible(true);
+            txtTenSP.setEditable(true);
+            txtMaSP.setEditable(true);
+            txtGia.setEditable(true);
+            btndonvi.setEnabled(true);
+            btnloaidouong.setEnabled(true);
+            cboDonvi.setEnabled(true);
+            cboLoaidouong.setEnabled(true);
+            rdoksd.setEnabled(true);
+            rdosd.setEnabled(true);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
