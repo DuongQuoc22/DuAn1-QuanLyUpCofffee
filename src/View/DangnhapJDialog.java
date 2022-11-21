@@ -63,6 +63,11 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         txtUserName.setBackground(new java.awt.Color(225, 193, 144));
         txtUserName.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         txtUserName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(223, 158, 105)));
+        txtUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserNameActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,6 +96,11 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         jPasswordField1.setBackground(new java.awt.Color(225, 193, 144));
         jPasswordField1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jPasswordField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(223, 158, 105)));
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -198,6 +208,14 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         ketThuc();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserNameActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -266,7 +284,11 @@ public class DangnhapJDialog extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, " Sai mật khẩu");
         } else {
             Auth.user = nhanVien;
-            JOptionPane.showMessageDialog(this, " Đăng nhập thành công");
+            if(Auth.isManager() == true){
+             JOptionPane.showMessageDialog(this, " Đăng nhập thành công dưới quyền quản lý");   
+            }else{
+                JOptionPane.showMessageDialog(this, " Đăng nhập thành công dưới quyền nhân viên");   
+            }
             this.dispose();
         }
     }
