@@ -5,9 +5,9 @@
 package Helper;
 
 
-import DAO.BanChitietDAO;
-import DAO.HoaDonDAO;
-import Entity.Hoadon;
+//import DAO.BanChitietDAO;
+import Dao.HoaDonDAO;
+import Model.Hoadon;
 import com.itextpdf.text.Chapter;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
