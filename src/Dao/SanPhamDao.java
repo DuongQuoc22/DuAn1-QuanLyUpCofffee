@@ -4,7 +4,7 @@
  */
 package Dao;
 
-import JDBCHelper.JDBCHeper;
+import Helper.JDBCHeper;
 import Model.SanPham;
 import java.util.ArrayList;
 import java.util.List;

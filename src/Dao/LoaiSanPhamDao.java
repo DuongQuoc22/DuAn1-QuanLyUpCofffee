@@ -8,7 +8,7 @@ package Dao;
 import Model.*;
 import java.util.*;
 import java.sql.ResultSet;
-import JDBCHelper.JDBCHeper;
+import Helper.JDBCHeper;
 /**
  *
  * @author Admin

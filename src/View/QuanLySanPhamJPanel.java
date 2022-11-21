@@ -5,8 +5,8 @@
 package View;
 
 
-import JDBCHelper.MsgBox;
-import JDBCHelper.Ximages;
+import Helper.MsgBox;
+import Helper.Ximages;
 import Dao.*;
 import javax.swing.table.DefaultTableModel;
 import Model.*;
