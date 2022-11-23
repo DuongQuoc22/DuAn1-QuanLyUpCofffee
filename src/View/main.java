@@ -51,12 +51,13 @@ public class Main extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Coffee");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/coffee-and-arrow-up-logo-combination-vector-14355977.jpg"))); // NOI18N
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
 
         pnTrangChu.setBackground(new java.awt.Color(41, 93, 157));
         pnTrangChu.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        pnTrangChu.setPreferredSize(new java.awt.Dimension(260, 74));
         pnTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnTrangChuMouseClicked(evt);
@@ -88,6 +89,7 @@ public class Main extends javax.swing.JFrame {
 
         pnBanHang.setBackground(new java.awt.Color(41, 93, 157));
         pnBanHang.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        pnBanHang.setPreferredSize(new java.awt.Dimension(260, 74));
         pnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnBanHangMouseClicked(evt);
@@ -119,6 +121,7 @@ public class Main extends javax.swing.JFrame {
 
         pnSanPham.setBackground(new java.awt.Color(41, 93, 157));
         pnSanPham.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        pnSanPham.setPreferredSize(new java.awt.Dimension(260, 74));
         pnSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnSanPhamMouseClicked(evt);
@@ -150,6 +153,7 @@ public class Main extends javax.swing.JFrame {
 
         pnHoaDon.setBackground(new java.awt.Color(41, 93, 157));
         pnHoaDon.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        pnHoaDon.setPreferredSize(new java.awt.Dimension(260, 74));
         pnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnHoaDonMouseClicked(evt);
@@ -181,6 +185,7 @@ public class Main extends javax.swing.JFrame {
 
         pnNhanVien.setBackground(new java.awt.Color(41, 93, 157));
         pnNhanVien.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        pnNhanVien.setPreferredSize(new java.awt.Dimension(260, 74));
         pnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnNhanVienMouseClicked(evt);
@@ -212,6 +217,7 @@ public class Main extends javax.swing.JFrame {
 
         pnThongke.setBackground(new java.awt.Color(41, 93, 157));
         pnThongke.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        pnThongke.setPreferredSize(new java.awt.Dimension(260, 74));
         pnThongke.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnThongkeMouseClicked(evt);
@@ -244,7 +250,7 @@ public class Main extends javax.swing.JFrame {
 
         pnGiagia.setBackground(new java.awt.Color(41, 93, 157));
         pnGiagia.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 0, 0)));
-        pnGiagia.setPreferredSize(new java.awt.Dimension(260, 86));
+        pnGiagia.setPreferredSize(new java.awt.Dimension(260, 74));
         pnGiagia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnGiagiaMouseClicked(evt);
@@ -279,19 +285,18 @@ public class Main extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addComponent(jLabel1)
+                .addGap(7, 7, 7)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel4);
@@ -308,7 +313,7 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
         );
 
         pack();
