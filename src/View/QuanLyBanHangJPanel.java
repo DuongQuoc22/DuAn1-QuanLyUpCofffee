@@ -261,9 +261,9 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         });
         pmnBan.add(mnGopBan);
 
-        setBackground(new java.awt.Color(250, 182, 124));
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        pnBan.setBackground(new java.awt.Color(250, 182, 124));
+        pnBan.setBackground(new java.awt.Color(255, 255, 255));
         pnBan.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Bàn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         pnBan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -282,7 +282,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             .addGap(0, 434, Short.MAX_VALUE)
         );
 
-        pnHoadon.setBackground(new java.awt.Color(250, 182, 124));
+        pnHoadon.setBackground(new java.awt.Color(255, 255, 255));
         pnHoadon.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
@@ -532,7 +532,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(250, 182, 124));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
         txtTimkiem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -615,7 +615,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 .addGap(21, 21, 21))
         );
 
-        pnTaiQuay.setBackground(new java.awt.Color(250, 182, 124));
+        pnTaiQuay.setBackground(new java.awt.Color(255, 255, 255));
         pnTaiQuay.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tại quầy", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
         pnTaiQuay.setPreferredSize(new java.awt.Dimension(440, 100));
 
@@ -1225,7 +1225,7 @@ BanDao DAOBAN = new BanDao();
         JScrollPane scrollPane = new JScrollPane(aa);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setBounds(1, 22, 439, 445);
+        scrollPane.setBounds(1, 22, 439, 440);
         JPanel contentPane = pnBan;
         contentPane.setLayout(null);
         contentPane.setPreferredSize(new Dimension(440, 466));
@@ -1330,10 +1330,10 @@ BanDao DAOBAN = new BanDao();
         JScrollPane scrollPane = new JScrollPane(aa);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        scrollPane.setBounds(1, 22, 439, 120);
+        scrollPane.setBounds(1, 22, 439, 260);
         JPanel contentPane = pnTaiQuay;
         contentPane.setLayout(null);
-        contentPane.setPreferredSize(new Dimension(440, 100));
+        contentPane.setPreferredSize(new Dimension(440, 300));
         contentPane.add(scrollPane);
 
     }

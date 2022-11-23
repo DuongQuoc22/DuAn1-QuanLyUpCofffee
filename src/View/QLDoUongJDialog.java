@@ -43,7 +43,7 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanelDoUong.setBackground(new java.awt.Color(225, 193, 144));
+        jPanelDoUong.setBackground(new java.awt.Color(41, 93, 157));
 
         tbltentheloai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,7 +77,8 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("TÊN LOẠI ĐỒ UỐNG");
 
         btnlammoi.setText("LÀM MỚI");
@@ -109,9 +110,11 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("LOẠI ĐỒ UỐNG");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("MÃ LOẠI ĐÔ UỐNG");
 
         btnsua.setText("SỬA");
@@ -152,7 +155,7 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDoUongLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addGap(83, 83, 83))
         );
         jPanelDoUongLayout.setVerticalGroup(
             jPanelDoUongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

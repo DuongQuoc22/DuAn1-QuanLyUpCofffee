@@ -7,7 +7,7 @@ public class HoaDonChiTietJDialog extends javax.swing.JDialog {
     SerHoaDonChiTiet sv = new SerHoaDonChiTiet();
 
     public HoaDonChiTietJDialog(int a) {
-        //hoadonchitiet
+
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);

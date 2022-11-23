@@ -2,6 +2,8 @@
 package View;
 
 
+import Helper.MsgBox;
+import Helper.Ximages;
 import Dao.*;
 import javax.swing.table.DefaultTableModel;
 import Model.*;
@@ -9,7 +11,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 import static java.util.Collections.list;
-import Helper.*;
 import Services.SanPhamService;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -47,6 +48,35 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
     private void init(){
         fillcomboboxLoaiSP();
         fillcomboDonVi();
+//        if(Auth.isManager()== false){
+//            btnThem.setVisible(false);
+//            btnSua.setVisible(false);
+//            btnXoa.setVisible(false);
+//            tbnLamMoi.setVisible(false);
+//            txtTenSP.setEditable(false);
+//            txtMaSP.setEditable(false);
+//            txtGia.setEditable(false);
+//            btndonvi.setEnabled(false);
+//            btnloaidouong.setEnabled(false);
+//            cboDonvi.setEnabled(false);
+//            cboLoaidouong.setEnabled(false);
+//            rdoksd.setEnabled(false);
+//            rdosd.setEnabled(false);         
+//        }else{
+//            btnThem.setVisible(true);
+//            btnSua.setVisible(true);
+//            btnXoa.setVisible(true);
+//            tbnLamMoi.setVisible(true);
+//            txtTenSP.setEditable(true);
+//            txtMaSP.setEditable(true);
+//            txtGia.setEditable(true);
+//            btndonvi.setEnabled(true);
+//            btnloaidouong.setEnabled(true);
+//            cboDonvi.setEnabled(true);
+//            cboLoaidouong.setEnabled(true);
+//            rdoksd.setEnabled(true);
+//            rdosd.setEnabled(true);
+//        }
     }
 
     @SuppressWarnings("unchecked")
@@ -186,7 +216,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         );
 
         jPanel1.add(jPanel4);
-        jPanel4.setBounds(50, 400, 511, 72);
+        jPanel4.setBounds(50, 400, 507, 63);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Mã sản phẩm");
@@ -325,14 +355,14 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         buttonGroup1.add(rdoksd);
         rdoksd.setText("Không sử dụng");
         jPanel1.add(rdoksd);
-        rdoksd.setBounds(740, 230, 110, 25);
+        rdoksd.setBounds(740, 230, 110, 21);
 
         rdosd.setBackground(new java.awt.Color(225, 193, 144));
         buttonGroup1.add(rdosd);
         rdosd.setSelected(true);
         rdosd.setText("sử dụng");
         jPanel1.add(rdosd);
-        rdosd.setBounds(860, 230, 90, 25);
+        rdosd.setBounds(860, 230, 90, 21);
 
         btnThem.setBackground(new java.awt.Color(255, 255, 255));
         btnThem.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
@@ -344,7 +374,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnThem);
-        btnThem.setBounds(1100, 140, 101, 34);
+        btnThem.setBounds(1100, 140, 120, 34);
 
         btnXoa.setBackground(new java.awt.Color(255, 255, 255));
         btnXoa.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
@@ -356,7 +386,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnXoa);
-        btnXoa.setBounds(1100, 260, 101, 34);
+        btnXoa.setBounds(1100, 260, 120, 34);
 
         btnSua.setBackground(new java.awt.Color(255, 255, 255));
         btnSua.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
@@ -367,7 +397,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btnSua);
-        btnSua.setBounds(1100, 200, 101, 34);
+        btnSua.setBounds(1100, 200, 120, 34);
 
         tbnLamMoi.setBackground(new java.awt.Color(255, 255, 255));
         tbnLamMoi.setFont(new java.awt.Font("Cambria", 0, 18)); // NOI18N
@@ -378,7 +408,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(tbnLamMoi);
-        tbnLamMoi.setBounds(1100, 320, 101, 34);
+        tbnLamMoi.setBounds(1100, 320, 120, 34);
 
         btndonvi.setBackground(new java.awt.Color(225, 193, 144));
         btndonvi.setText("+");
@@ -388,7 +418,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(btndonvi);
-        btndonvi.setBounds(450, 320, 41, 30);
+        btndonvi.setBounds(450, 320, 39, 30);
 
         btnloaidouong.setBackground(new java.awt.Color(225, 193, 144));
         btnloaidouong.setText("+");
@@ -703,6 +733,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         } else {
             updateStatus2();
         }
+
     }
     
     private void search() {

@@ -153,7 +153,9 @@ VALUES(2,'SP1',50)
 --Nhanvien
 
 INSERT dbo.NhanVien VALUES('NV2',N'Đào Gia Phong',1,'2002/10/11',N'Hà nội',N'phong9ngontay@gmail.com','0385370656','phongbcs','123456',1, 0,N'')
-
+INSERT dbo.NhanVien VALUES('NV3',N'Đào Gia Phong',1,'2003/09/16',N'Hà Nội',N'phong9ngontay@gmail.com','0385370656','p','123',1, 0,N'')
+select * from NhanVien
+delete from NhanVien where ID_Nhanvien ='NV1'
 --Ban
 --INSERT dbo.Ban VALUES(0,1,1,2)--TRang thai = 1 la mang ban su dung, Hoatdong = 1 la ban trong =0 la ban dang co nguoi
 --INSERT dbo.Ban VALUES(15,0,1,2)
