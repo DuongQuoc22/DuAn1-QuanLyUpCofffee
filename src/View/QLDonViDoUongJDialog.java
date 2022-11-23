@@ -61,7 +61,7 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(225, 193, 144));
+        jPanel1.setBackground(new java.awt.Color(241, 241, 241));
 
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -78,7 +78,7 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
 
         jLabel6.setText("Kích Thước");
 
-        jPanel2.setBackground(new java.awt.Color(225, 193, 144));
+        jPanel2.setBackground(new java.awt.Color(241, 241, 241));
         jPanel2.setLayout(new java.awt.GridLayout(1, 4, 20, 20));
 
         jButton1.setText("THÊM ");

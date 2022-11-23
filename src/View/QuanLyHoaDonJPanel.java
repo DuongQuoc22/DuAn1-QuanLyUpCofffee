@@ -61,9 +61,9 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
         });
         jPopupMenu2.add(jMenuItem1);
 
-        setBackground(new java.awt.Color(224, 192, 143));
+        setBackground(new java.awt.Color(241, 241, 241));
 
-        jPanel1.setBackground(new java.awt.Color(224, 192, 143));
+        jPanel1.setBackground(new java.awt.Color(241, 241, 241));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
         tblHoadon.setModel(new javax.swing.table.DefaultTableModel(
@@ -104,7 +104,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
             .addComponent(jScrollPane1)
         );
 
-        jPanel2.setBackground(new java.awt.Color(224, 192, 143));
+        jPanel2.setBackground(new java.awt.Color(241, 241, 241));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Hóa đơn hủy", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
         tblhuydon.setModel(new javax.swing.table.DefaultTableModel(
@@ -145,7 +145,7 @@ public class QuanLyHoaDonJPanel extends javax.swing.JPanel {
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(new java.awt.Color(224, 192, 143));
+        jPanel3.setBackground(new java.awt.Color(241, 241, 241));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

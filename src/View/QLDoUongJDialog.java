@@ -57,7 +57,7 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanelDoUong.setBackground(new java.awt.Color(225, 193, 144));
+        jPanelDoUong.setBackground(new java.awt.Color(241, 241, 241));
 
         tbltentheloai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -166,7 +166,7 @@ public class QLDoUongJDialog extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDoUongLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addGap(76, 76, 76))
         );
         jPanelDoUongLayout.setVerticalGroup(
             jPanelDoUongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

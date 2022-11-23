@@ -8,6 +8,7 @@ package View;
 import Helper.MsgBox;
 import Helper.Ximages;
 import Dao.*;
+import Helper.Auth;
 import javax.swing.table.DefaultTableModel;
 import Model.*;
 import java.io.File;
@@ -134,7 +135,9 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         btnloaidouong = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(225, 193, 144));
+        setBackground(new java.awt.Color(241, 241, 241));
+
+        jPanel1.setBackground(new java.awt.Color(241, 241, 241));
         jPanel1.setLayout(null);
 
         tabs.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,7 +205,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         jPanel1.add(tabs);
         tabs.setBounds(50, 460, 1220, 300);
 
-        jPanel4.setBackground(new java.awt.Color(225, 193, 144));
+        jPanel4.setBackground(new java.awt.Color(241, 241, 241));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.MatteBorder(null), "Tìm kiếm(Tên hoặc Mã)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -269,7 +272,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         jPanel1.add(cboLoaidouong);
         cboLoaidouong.setBounds(490, 320, 190, 30);
 
-        jPanel5.setBackground(new java.awt.Color(225, 193, 144));
+        jPanel5.setBackground(new java.awt.Color(241, 241, 241));
 
         lblHinh.setBackground(new java.awt.Color(204, 204, 255));
         lblHinh.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -364,13 +367,13 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         jPanel1.add(jLabel7);
         jLabel7.setBounds(740, 210, 100, 17);
 
-        rdoksd.setBackground(new java.awt.Color(225, 193, 144));
+        rdoksd.setBackground(new java.awt.Color(241, 241, 241));
         buttonGroup1.add(rdoksd);
         rdoksd.setText("Không sử dụng");
         jPanel1.add(rdoksd);
         rdoksd.setBounds(740, 230, 110, 25);
 
-        rdosd.setBackground(new java.awt.Color(225, 193, 144));
+        rdosd.setBackground(new java.awt.Color(241, 241, 241));
         buttonGroup1.add(rdosd);
         rdosd.setSelected(true);
         rdosd.setText("sử dụng");
