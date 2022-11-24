@@ -22,7 +22,7 @@ public class HoaDonChiTietJDialog extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHoaDonChiTiet = new javax.swing.JTable();
         lblPve = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTeDialog = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,9 +55,9 @@ public class HoaDonChiTietJDialog extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel1.setText("Hóa Đơn Chi Tiết");
+        lblTeDialog.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblTeDialog.setForeground(new java.awt.Color(51, 51, 255));
+        lblTeDialog.setText("Hóa Đơn Chi Tiết");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,7 +67,7 @@ public class HoaDonChiTietJDialog extends javax.swing.JDialog {
                 .addGap(23, 23, 23)
                 .addComponent(lblPve)
                 .addGap(190, 190, 190)
-                .addComponent(jLabel1)
+                .addComponent(lblTeDialog)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -80,7 +80,7 @@ public class HoaDonChiTietJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(43, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
+                        .addComponent(lblTeDialog)
                         .addGap(42, 42, 42))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -109,10 +109,10 @@ public class HoaDonChiTietJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_lblPveMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPve;
+    private javax.swing.JLabel lblTeDialog;
     public static javax.swing.JTable tblHoaDonChiTiet;
     // End of variables declaration//GEN-END:variables
 }

@@ -664,15 +664,17 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
 
     private void btnThemDoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemDoActionPerformed
         // TODO add your handling code here:
+        //nếu cái dòng thông tin mã hóa đơn bị trống ...... thì là chưa tạo hóa đơn
         if (lblMaHoaDon.getText().equals("......")) {
             JOptionPane.showMessageDialog(this, "Chưa tạo đơn");
             return;
         }
-        int row = tblSanPham.getSelectedRow();
+        int row = tblSanPham.getSelectedRow(); // lấy vào dòng đang chọn
         if (row < 0) {
             JOptionPane.showMessageDialog(this, "chưa chọn sản phẩm");
             return;
         }
+        // lấy mã sản phẩm từ bảng sản phẩm 
         String masp = tblSanPham.getValueAt(row, 0).toString();
 
         if (!DAOHDCHITIET.selectByIdHD_TT0(Integer.parseInt(lblMaHoaDon.getText()), masp).isEmpty()) {
@@ -732,7 +734,6 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         if (ld.buttonsa) {
             taoDon();
             filltoHoadonCTT();
-
             filltoDesktaiquay();
         } else if (!ld.buttonsa) {
             if (numberDesk == null) {
@@ -965,7 +966,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             }
             filltoDesk();
 //                filltoDeskgiaohang();
-//                filltoDesktaiquay();
+            filltoDesktaiquay();
             filltoHoadonCTT();
         }
     }//GEN-LAST:event_mnNhomBanActionPerformed
@@ -1009,12 +1010,10 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
 
         if (cnGopDon.status == true) {
             filltoDesk();
-
             filltoDesktaiquay();
             filltoHoadonCTT();
             filltoTableHDCT();
         }
-
         //mahd xóa tự tăng
     }//GEN-LAST:event_mnGopDonActionPerformed
 
@@ -1116,7 +1115,8 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txttienKhachTra;
     private javax.swing.JTextField txttienThoi;
     // End of variables declaration//GEN-END:variables
-BanDao DAOBAN = new BanDao();
+
+    BanDao DAOBAN = new BanDao();
     SanPhamDao DAOSP = new SanPhamDao();
     LoaiSanPhamDao DAOLSP = new LoaiSanPhamDao();
     DonViDoUongDao DAODVSP = new DonViDoUongDao();
@@ -1126,7 +1126,7 @@ BanDao DAOBAN = new BanDao();
     NhanVienDAO DAONV = new NhanVienDAO();
 
     HashMap<JButton, Ban> hmap = new HashMap<>();//laays theo key button
-//HashMap<Ban, JButton> hmapbutton = new HashMap<>();
+    //HashMap<Ban, JButton> hmapbutton = new HashMap<>();
 
     public void filltoDesk() {
         pnBan.removeAll();
@@ -1596,15 +1596,14 @@ BanDao DAOBAN = new BanDao();
     }
 
     public void taoDon() {
-
         HoaDon hd;
-//    int i = 0;
-//    if (list.isEmpty()) {
-//        i = 1;
-//    }else{
-//        hd = list.get(list.size() -1);
-//        i = hd.getIdHoaDon()+1;
-//    }
+        //    int i = 0;
+        //    if (list.isEmpty()) {
+        //        i = 1;
+        //    }else{
+        //        hd = list.get(list.size() -1);
+        //        i = hd.getIdHoaDon()+1;
+        //    }
         if (numberDesk == null) {
             JOptionPane.showMessageDialog(this, "Chưa chọn bàn!!!!");
             return;
@@ -1634,7 +1633,7 @@ BanDao DAOBAN = new BanDao();
     private HoaDon setInforHoaDon() {
         HoaDon hd = new HoaDon();
         //hd.setIdHoaDon(i);
-        hd.setIdNhanVien("NV1");
+        hd.setIdNhanVien("NV2");
         hd.setNgayTao(Xdate.toDate(lblNgay.getText(), "yyyy-MM-dd"));
         hd.setTrangThai(true);
         hd.setTrangThaiTT(false);
