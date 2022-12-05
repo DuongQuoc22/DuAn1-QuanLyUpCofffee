@@ -88,7 +88,6 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         btnTimkiem3 = new javax.swing.JButton();
         btnTimkiem4 = new javax.swing.JButton();
-        btnxuatexcel = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblsoluong = new javax.swing.JTable();
@@ -216,47 +215,35 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnxuatexcel.setText("Xuất Excel");
-        btnxuatexcel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnxuatexcelActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnxuatexcel, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(16, 16, 16)
-                                .addComponent(jDateNgaybd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel1)
-                                .addGap(30, 30, 30)
-                                .addComponent(jDatengayKt, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnTimkiem))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(cboDate, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                                .addComponent(btnTimkiem2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(btnTimkiem4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(btnTimkiem3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18))))
+                        .addComponent(jLabel2)
+                        .addGap(16, 16, 16)
+                        .addComponent(jDateNgaybd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel1)
+                        .addGap(30, 30, 30)
+                        .addComponent(jDatengayKt, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnTimkiem))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(cboDate, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                        .addComponent(btnTimkiem2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnTimkiem4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(btnTimkiem3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnTimkiem2, btnTimkiem3, btnTimkiem4, btnxuatexcel, cboDate, jDateNgaybd, jDatengayKt});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnTimkiem2, btnTimkiem3, btnTimkiem4, cboDate, jDateNgaybd, jDatengayKt});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,9 +259,7 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
                             .addComponent(btnTimkiem4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnTimkiem2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnTimkiem3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addComponent(btnxuatexcel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDateNgaybd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2)
@@ -283,7 +268,7 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
                 .addGap(32, 32, 32))
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnTimkiem, btnTimkiem2, btnTimkiem3, btnTimkiem4, btnxuatexcel, cboDate});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnTimkiem, btnTimkiem2, btnTimkiem3, btnTimkiem4, cboDate});
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jDateNgaybd, jDatengayKt});
 
@@ -493,22 +478,20 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTimkiem3ActionPerformed
 
     public void sendmailngay(String a,String b) throws MessagingException {
-        final String username = "upcoffee.forwork@hotmail.com";
-        final String password = "30042002@";
-        
-        Properties prop = new Properties();
-        prop.put("mail.smtp.starttls.enable", "true");
-        prop.put("mail.smtp.host", "smtp.office365.com");
-        prop.put("mail.smtp.port", "587");
-        prop.put("mail.smtp.auth", "true");
-        //TLS
-        
-        Session session = Session.getInstance(prop,
-                new javax.mail.Authenticator() {
-                    protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
-                    }
-                });
+                Properties p = new Properties();
+                p.put("mail.smtp.auth", "true");
+                p.put("mail.smtp.starttls.enable", "true");
+                p.put("mail.smtp.host", "smtp.office365.com");
+                p.put("mail.smtp.port", 587);
+                // Email gửi 
+                String username = "duongquoc2002@hotmail.com";
+                String password = "30042002@";
+                Session s = Session.getInstance(p,
+                        new javax.mail.Authenticator() {
+                            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                                return new javax.mail.PasswordAuthentication(username, password);
+                            }
+                        });
         
        
             
@@ -523,13 +506,13 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
                
                 return;
             }
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("phong9zx2@gmail.com"));
+            Message message = new MimeMessage(s);
+            message.setFrom(new InternetAddress("upcoffee.forwork@hotmail.com"));
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse(mail)
             );
-            //thaocnph13274@fpt.edu.vn
+            //body mail
             message.setSubject("Báo Cáo Thống Kê "+a);//a=hàng ngày
             String Htmlcode = "<h3 >Kính Gửi Sếp !  </h3>";
             String Htmlcode1 = "<h4>Tình hình doanh thu, số lượng sản phẩm bán được, số lượng đơn hàng "
@@ -544,7 +527,7 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
             message.setContent(Htmlcode+Htmlcode1+Htmlcode2+Htmlcode3+Htmlcode4+Htmlcode5+Htmlcode6+Htmlcode7+Htmlcode8, "text/html;charset=UTF-8");
             
             Transport.send(message);
-            JOptionPane.showMessageDialog(this, "Mail đã được gửi tới quản lý!");
+            JOptionPane.showMessageDialog(this, "Đã gửi!");
             
         
     }
@@ -567,30 +550,12 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
        
     }//GEN-LAST:event_btnTimkiem4ActionPerformed
 
-    private void btnxuatexcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxuatexcelActionPerformed
-        int hoi = JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất thống kê Excel?", "Xuất Excel", JOptionPane.YES_NO_OPTION);
-            if (hoi == JOptionPane.YES_OPTION) {
-                if(cboDate.getSelectedIndex()==0){
-           printFile("Hôm Nay");
-        }
-        if(cboDate.getSelectedIndex()==1){
-            printFile("Tháng Này");
-        }
-         if(cboDate.getSelectedIndex()==2){
-           printFile("Năm Này");
-        }
-            }
-        
-    
-    }//GEN-LAST:event_btnxuatexcelActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTimkiem;
     private javax.swing.JButton btnTimkiem2;
     private javax.swing.JButton btnTimkiem3;
     private javax.swing.JButton btnTimkiem4;
-    private javax.swing.JButton btnxuatexcel;
     public static javax.swing.JComboBox<String> cboDate;
     public static com.toedter.calendar.JDateChooser jDateNgaybd;
     public static com.toedter.calendar.JDateChooser jDatengayKt;
@@ -857,65 +822,4 @@ public class MainThongKeJPanel extends javax.swing.JPanel {
         }
     }
 
-    private void printFile(String a) {
-        dtm = (DefaultTableModel) tblsoluong.getModel();
-        JFileChooser fchoChooser = new JFileChooser();
-        int result = fchoChooser.showSaveDialog(null);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            try {
-                if (!fchoChooser.getSelectedFile().toString().endsWith(".xlsx")) {
-                    JOptionPane.showMessageDialog(this, "Không đúng định dạng!");
-                    return;
-                }
-                File newFile = new File(fchoChooser.getSelectedFile().toString());
-                FileOutputStream file = new FileOutputStream(newFile.getAbsoluteFile().getPath());
-                XSSFWorkbook wb = new XSSFWorkbook();
-                //TK điểm
-                XSSFSheet Diemsheep = wb.createSheet("TK_Doanh Thu SP Theo "+a);
-                XSSFRow row = Diemsheep.createRow((short) 0);
-                XSSFCell h;
-                for (int i = 0; i < dtm.getColumnCount(); i++) {
-                    h = row.createCell((short) i);
-                    h.setCellValue(dtm.getColumnName(i));
-                }
-                XSSFRow row1;
-                XSSFCell a1;
-                XSSFCell a2;
-                XSSFCell a3;
-                
-                for (int i = 0; i < dtm.getRowCount(); i++) {
-                    row1 = Diemsheep.createRow((short) i + 1);
-                    for (int j = 0; j < dtm.getColumnCount(); j++) {
-                        a1 = row1.createCell((short) j);
-                        a1.setCellValue(dtm.getValueAt(i, j).toString());
-                    }
-                }
-
-                
-                dtm = (DefaultTableModel) tblhuydon.getModel();
-                XSSFSheet NguoiHocsheep = wb.createSheet("TK_Đơn Hủy Theo NV Theo "+a);
-                row = NguoiHocsheep.createRow((short) 0);
-                for (int i = 0; i < dtm.getColumnCount(); i++) {
-                    h = row.createCell((short) i);
-                    h.setCellValue(dtm.getColumnName(i));
-                }
-                for (int i = 0; i < dtm.getRowCount(); i++) {
-                    row1 = NguoiHocsheep.createRow((short) i + 1);
-                    for (int j = 0; j < dtm.getColumnCount(); j++) {
-                        a1 = row1.createCell((short) j);
-                        a1.setCellValue(dtm.getValueAt(i, j).toString());
-                    }
-                }
-
-              
-                wb.write(file);
-                wb.close();
-                file.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-
-            }
-        }
-    }
 }
