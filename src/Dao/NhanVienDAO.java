@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Pham Quoc Huy
+ * @author Admin
  */
 public class NhanVienDAO implements InterfaceNhanVien {
 
@@ -25,7 +25,7 @@ public class NhanVienDAO implements InterfaceNhanVien {
     String SELECT_BY_ACCOUNT_SQL = "select * from NhanVien where Username = ?";
     String SELECT_TrangThai1 = "select * from NhanVien where Trangthai = 0";
     String SELECT_TrangThai2 = "select * from NhanVien where Trangthai = 1";
-
+    String update_pass = "update NhanVien set Pass=? where Email=?";
     public List<NhanVien> selectAll;
 
     @Override
@@ -95,7 +95,9 @@ public class NhanVienDAO implements InterfaceNhanVien {
             throw new RuntimeException(e);
         }
     }
-
+    public void update_pass(String code, String email){
+        JDBCHeper.update(update_pass, code, email);
+    }
     public List<NhanVien> select_TrangThai1() {
         return selectBySql(SELECT_TrangThai1);
     }

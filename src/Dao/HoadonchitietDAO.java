@@ -5,7 +5,7 @@
  */
 package Dao;
 
-import Model.Hoadonchitiet;
+import Model.HoaDonChiTiet;
 import Helper.JDBCHeper;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -41,18 +41,18 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
     String SELECT_BY_ID_SQL_thao = "SELECT * FROM dbo.HoaDonChiTiet WHERE ID_HoaDon = ?";
 
     @Override
-    public void insert(Hoadonchitiet Entity) {
+    public void insert(HoaDonChiTiet Entity) {
         Helper.JDBCHeper.update(INSERT_SQL, Entity.getID_Hoadon(), Entity.getID_SanPHam(), Entity.getSoluong(), Entity.getGia(), Entity.getTongGia(), Entity.isTrangThai(), Entity.getLyDoHuy(), Entity.getGhiChu());
     }
 
     @Override
-    public void delete(Hoadonchitiet Entity) {
+    public void delete(HoaDonChiTiet Entity) {
         Helper.JDBCHeper.update(UPDATE_SQL_TrangThai, Entity.isTrangThai(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     @Override
-    public Hoadonchitiet selectById(int id, String MaSP) {
-        List<Hoadonchitiet> list = this.selectBySql(SELECT_BY_ID_SQL, id, MaSP);
+    public HoaDonChiTiet selectById(int id, String MaSP) {
+        List<HoaDonChiTiet> list = this.selectBySql(SELECT_BY_ID_SQL, id, MaSP);
         if (list.isEmpty()) {
             return null;
         }
@@ -60,17 +60,17 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
     }
 
     @Override
-    public List<Hoadonchitiet> selectAll() {
+    public List<HoaDonChiTiet> selectAll() {
         return this.selectBySql(SELECT_ALL_SQL);
     }
 
     @Override
-    public List<Hoadonchitiet> selectBySql(String sql, Object... args) {
-        List<Hoadonchitiet> list = new ArrayList<>();
+    public List<HoaDonChiTiet> selectBySql(String sql, Object... args) {
+        List<HoaDonChiTiet> list = new ArrayList<>();
         try {
             ResultSet rs = JDBCHeper.query(sql, args);
             while (rs.next()) {
-                Hoadonchitiet Entity = new Hoadonchitiet();
+                HoaDonChiTiet Entity = new HoaDonChiTiet();
                 Entity.setID_Hoadon(rs.getInt("ID_HoaDon"));
                 Entity.setID_SanPHam(rs.getString("ID_SanPham"));
                 Entity.setSoluong(rs.getInt("Soluong"));
@@ -88,36 +88,36 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
         }
     }
 
-    public List<Hoadonchitiet> selectByIDBan(int idBan) {
+    public List<HoaDonChiTiet> selectByIDBan(int idBan) {
         return selectBySql(SELECT_ALL_BY_ID_Ban, idBan);
     }
 
     @Override
-    public List<Hoadonchitiet> selectByIdHD_TT1(int idHD, String idSP) {
+    public List<HoaDonChiTiet> selectByIdHD_TT1(int idHD, String idSP) {
         return selectBySql(SELECT_BY_ID_MaHD_TT1, idHD, idSP);
     }
 
     @Override
-    public List<Hoadonchitiet> selectByIdHD_TT0(int idHD, String idSP) {
+    public List<HoaDonChiTiet> selectByIdHD_TT0(int idHD, String idSP) {
         return selectBySql(SELECT_BY_ID_MaHD_TT0, idHD, idSP);
     }
 
     @Override
-    public void update_TT(Hoadonchitiet Entity) {
+    public void update_TT(HoaDonChiTiet Entity) {
         Helper.JDBCHeper.update(UPDATE_SQL_TrangThai, Entity.isTrangThai(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     @Override
-    public void update_SL(Hoadonchitiet Entity) {
+    public void update_SL(HoaDonChiTiet Entity) {
         Helper.JDBCHeper.update(UPDATE_SQL_soluong, Entity.getSoluong(), Entity.getTongGia(), Entity.getGhiChu(), Entity.getGia(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
     @Override
-    public void update_LD(Hoadonchitiet Entity) {
+    public void update_LD(HoaDonChiTiet Entity) {
         Helper.JDBCHeper.update(UPDATE_LY_DO_HUY, Entity.getLyDoHuy(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
-    public void update_ghichu(Hoadonchitiet Entity) {
+    public void update_ghichu(HoaDonChiTiet Entity) {
         Helper.JDBCHeper.update(UPDATE_Ghi_chu, Entity.getGhiChu(), Entity.getID_Hoadon(), Entity.getID_SanPHam());
     }
 
@@ -141,11 +141,11 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
         return selectCount(selcecCountSPhuy, idhd);
     }
 
-    public List<Hoadonchitiet> selectById1(int id) {
+    public List<HoaDonChiTiet> selectById1(int id) {
         return this.selectBySql(SELECT_BY_ID_SQL_thao, id);
     }
 
-    public List<Hoadonchitiet> selectByIdHD(int id) {
+    public List<HoaDonChiTiet> selectByIdHD(int id) {
         return this.selectBySql(SELECT_ALL_BY_ID_HD, id);
     }
 

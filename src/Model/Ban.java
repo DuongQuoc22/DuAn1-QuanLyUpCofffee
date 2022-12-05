@@ -1,36 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Model;
 
-/**
- *
- * @author Admin
- */
+import java.util.Date;
+
 public class Ban {
-    private int id;
+    private int idBan;
     private boolean trangThai;
     private boolean hoatDong;
-    private int soLuongCho;
+    private int soluongcho;
     
-    public Ban(){
-        
+    public Ban() {
     }
 
-    public Ban(int id, boolean trangThai, boolean hoatDong, int soLuongCho) {
-        this.id = id;
+    public Ban(int idBan, boolean trangThai, boolean hoatDong, int soluongcho) {
+        this.idBan = idBan;
         this.trangThai = trangThai;
         this.hoatDong = hoatDong;
-        this.soLuongCho = soLuongCho;
+        this.soluongcho = soluongcho;
     }
 
-    public int getId() {
-        return id;
+    
+
+    public int getIdBan() {
+        return idBan;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdBan(int idBan) {
+        this.idBan = idBan;
     }
 
     public boolean isTrangThai() {
@@ -49,16 +45,18 @@ public class Ban {
         this.hoatDong = hoatDong;
     }
 
-    public int getSoLuongCho() {
-        return soLuongCho;
+    public int getSoluongcho() {
+        return soluongcho;
     }
 
-    public void setSoLuongCho(int soLuongCho) {
-        this.soLuongCho = soLuongCho;
+    public void setSoluongcho(int soluongcho) {
+        this.soluongcho = soluongcho;
+    }
+
+ 
+    @Override
+    public String toString() {
+        return "Bàn:"+ idBan + " ("+soluongcho+")";
     }
     
-    @Override
-    public String toString(){
-        return "Bàn "+id+" (" + soLuongCho + ")";
-    }
 }

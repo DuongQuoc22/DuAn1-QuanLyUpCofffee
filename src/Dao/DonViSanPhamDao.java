@@ -14,20 +14,20 @@ import java.sql.ResultSet;
  */
 public class DonViSanPhamDao implements InterfaceDonViSanPham{
     
-    String insert = "insert DonViSanPham(ID_DonviSP, TenDonvi,Kichthuoc) values (?,?,?)";
+    String insert = "insert DonViSanPham(ID_DonviSP, TenDonvi,Kichthuoc,ThemTien) values (?,?,?,?)";
     String selectAll ="select * from DonViSanPham";
     String selectId = "select * from DonViSanPham where ID_DonviSP = ?";
-    String sqlUpdate = "update DonViSanPham set TENDONVI = ?, KICHTHUOC=? where ID_DONVISP = ?";
+    String sqlUpdate = "update DonViSanPham set TENDONVI = ?, KICHTHUOC=?, ThemTien=? where ID_DONVISP = ?";
     String sqlDelete = "delete DonViSanPham where ID_DonviSP =?";
     
     @Override
     public void insert(DonViSanPham dv) {
-        JDBCHeper.update(insert, dv.getID_DonviSP(), dv.getTenDonvi(), dv.getKichthuoc());
+        JDBCHeper.update(insert, dv.getID_DonviSP(), dv.getTenDonvi(), dv.getKichthuoc(),dv.getThemTien());
     }
 
     @Override
     public void update(DonViSanPham dv) {
-        JDBCHeper.update(sqlUpdate, dv.getTenDonvi(), dv.getKichthuoc(), dv.getID_DonviSP());
+        JDBCHeper.update(sqlUpdate, dv.getTenDonvi(), dv.getKichthuoc(),dv.getThemTien(), dv.getID_DonviSP());
     }
 
     @Override
@@ -55,6 +55,7 @@ public class DonViSanPhamDao implements InterfaceDonViSanPham{
                 dv.setID_DonviSP(rs.getString(1));
                 dv.setTenDonvi(rs.getString(2));
                 dv.setKichthuoc(rs.getInt(3));
+                dv.setThemTien(rs.getInt(4));
                 list.add(dv);
             }
             rs.getStatement().getConnection().close();
@@ -76,7 +77,7 @@ public class DonViSanPhamDao implements InterfaceDonViSanPham{
         if (list.isEmpty()) {
             return null;
         }
-        return list.get(1);
+        return list.get(0);
     }
 
     public String selectNameByID(String id) {

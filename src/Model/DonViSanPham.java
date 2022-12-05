@@ -12,14 +12,16 @@ public class DonViSanPham {
     private String ID_DonviSP;
     private String TenDonvi;
     private int Kichthuoc;
-
+    private int ThemTien;
+    
     public DonViSanPham() {
     }
 
-    public DonViSanPham(String ID_DonviSP, String TenDonvi, int Kichthuoc) {
+    public DonViSanPham(String ID_DonviSP, String TenDonvi, int Kichthuoc, int ThemTien) {
         this.ID_DonviSP = ID_DonviSP;
         this.TenDonvi = TenDonvi;
         this.Kichthuoc = Kichthuoc;
+        this.ThemTien = ThemTien;
     }
 
     public String getID_DonviSP() {
@@ -45,6 +47,15 @@ public class DonViSanPham {
     public void setKichthuoc(int Kichthuoc) {
         this.Kichthuoc = Kichthuoc;
     }
+
+    public int getThemTien() {
+        return ThemTien;
+    }
+
+    public void setThemTien(int ThemTien) {
+        this.ThemTien = ThemTien;
+    }
+    
     @Override
     public String toString(){
         return TenDonvi;

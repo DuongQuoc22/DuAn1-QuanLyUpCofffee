@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Model;
 
@@ -8,46 +9,48 @@ import java.util.Date;
 
 /**
  *
- * @author Admin
+ * @author HP
  */
 public class BanChiTiet {
-    private int idHoaDon;
-        private int idBan;
-        private Date thoiDiemCoNguoi;
-        private boolean banChinh;
-
+    private int ID_HoaDon;
+    private int ID_Ban;
+    private Date thoidiemCoNguoi;
+    private boolean banChinh;
+    
     public BanChiTiet() {
     }
 
-    public BanChiTiet(int idHoaDon, int idBan, Date thoiDiemCoNguoi, boolean banChinh) {
-        this.idHoaDon = idHoaDon;
-        this.idBan = idBan;
-        this.thoiDiemCoNguoi = thoiDiemCoNguoi;
+    public BanChiTiet(int ID_HoaDon, int ID_Ban, Date thoidiemCoNguoi, boolean banChinh) {
+        this.ID_HoaDon = ID_HoaDon;
+        this.ID_Ban = ID_Ban;
+        this.thoidiemCoNguoi = thoidiemCoNguoi;
         this.banChinh = banChinh;
     }
 
-    public int getIdHoaDon() {
-        return idHoaDon;
+    
+
+    public int getID_HoaDon() {
+        return ID_HoaDon;
     }
 
-    public void setIdHoaDon(int idHoaDon) {
-        this.idHoaDon = idHoaDon;
+    public void setID_HoaDon(int ID_HoaDon) {
+        this.ID_HoaDon = ID_HoaDon;
     }
 
-    public int getIdBan() {
-        return idBan;
+    public int getID_Ban() {
+        return ID_Ban;
     }
 
-    public void setIdBan(int idBan) {
-        this.idBan = idBan;
+    public void setID_Ban(int ID_Ban) {
+        this.ID_Ban = ID_Ban;
     }
 
-    public Date getThoiDiemCoNguoi() {
-        return thoiDiemCoNguoi;
+    public Date getThoidiemCoNguoi() {
+        return thoidiemCoNguoi;
     }
 
-    public void setThoiDiemCoNguoi(Date thoiDiemCoNguoi) {
-        this.thoiDiemCoNguoi = thoiDiemCoNguoi;
+    public void setThoidiemCoNguoi(Date thoidiemCoNguoi) {
+        this.thoidiemCoNguoi = thoidiemCoNguoi;
     }
 
     public boolean isBanChinh() {
@@ -57,4 +60,6 @@ public class BanChiTiet {
     public void setBanChinh(boolean banChinh) {
         this.banChinh = banChinh;
     }
+    
+    
 }

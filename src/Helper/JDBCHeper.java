@@ -10,8 +10,11 @@ public class JDBCHeper {
    static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=UPCOFFEE";
    static String user ="admin";
    static String password ="12345";
-//   static String user ="sa";
-//   static String password ="123456";
+
+//    static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+//    static String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName=QUANLYCAPHEBANME";//kết nối db
+//    static String user = "admin1";//tài khoản 
+//    static String password = "12345";//mật khẩu
     
      static {
         try {

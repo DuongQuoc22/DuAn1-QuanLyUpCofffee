@@ -58,6 +58,8 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
         jButton4 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbldonvi = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        txtGiaUpSize = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -118,11 +120,11 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Mã Đơn Vị", "Tên Đơn Vị", "Kích Thước"
+                "Mã Đơn Vị", "Tên Đơn Vị", "Kích Thước", "Giá up size"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -136,6 +138,8 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
         });
         jScrollPane2.setViewportView(tbldonvi);
 
+        jLabel7.setText("Giá up size:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -148,18 +152,19 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
                                 .addContainerGap()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtmadonvi, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                                        .addComponent(txttendonvi)
-                                        .addComponent(txtkichthuoc)))))
+                                    .addComponent(txtmadonvi, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                                    .addComponent(txttendonvi)
+                                    .addComponent(txtkichthuoc)
+                                    .addComponent(txtGiaUpSize))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -185,15 +190,19 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtmadonvi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txttendonvi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                    .addComponent(txttendonvi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtkichthuoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtGiaUpSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,7 +306,7 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
         model.setRowCount(0);
         List<DonViSanPham> list = dao.selectAll();
         for (DonViSanPham x : list) {
-            model.addRow(new Object[]{x.getID_DonviSP(), x.getTenDonvi(), x.getKichthuoc()});
+            model.addRow(new Object[]{x.getID_DonviSP(), x.getTenDonvi(), x.getKichthuoc(),x.getThemTien()});
         }
     }
 
@@ -305,6 +314,7 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
         txtmadonvi.setText(tbldonvi.getValueAt(row, 0).toString());
         txttendonvi.setText(tbldonvi.getValueAt(row, 1).toString());
         txtkichthuoc.setText(tbldonvi.getValueAt(row, 2).toString());
+        txtGiaUpSize.setText(tbldonvi.getValueAt(row, 3).toString());
     }
 
     private DonViSanPham getform() {
@@ -312,6 +322,7 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
         dv.setID_DonviSP(txtmadonvi.getText());
         dv.setTenDonvi(txttendonvi.getText());
         dv.setKichthuoc(Integer.parseInt(txtkichthuoc.getText()));
+        dv.setThemTien(Integer.parseInt(txtGiaUpSize.getText()));
         return dv;
     }
 
@@ -326,6 +337,7 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
         txtmadonvi.setText("");
         txttendonvi.setText("");
         txtkichthuoc.setText("");
+        txtGiaUpSize.setText("");
         row = -1;
         selectMaxIDLSP();
     }
@@ -428,10 +440,12 @@ public class QLDonViDoUongJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tbldonvi;
+    private javax.swing.JTextField txtGiaUpSize;
     private javax.swing.JTextField txtkichthuoc;
     private javax.swing.JTextField txtmadonvi;
     private javax.swing.JTextField txttendonvi;
