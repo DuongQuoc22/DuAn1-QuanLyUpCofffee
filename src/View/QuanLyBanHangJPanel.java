@@ -62,6 +62,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         filltoDesktaiquay();
         filltoComboboxLSP();
         filltableSanPham();
+        fillTableSize();
         filltoHoadonCTT();
         txtTongTien.setEditable(false);
         txttienThoi.setEditable(false);
@@ -155,6 +156,8 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         btnThemDo = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblSize = new javax.swing.JTable();
         pnTaiQuay = new javax.swing.JPanel();
 
         jPopupMenu1.setBackground(new java.awt.Color(102, 102, 255));
@@ -400,7 +403,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã HD", "Mã SP", "Tên Sản  Phẩm", "SL", "Giá", "Tổng giá", "Ghi chú"
+                "Mã HD", "Mã SP", "Tên Sản  Phẩm", "SL", "Giá", "Size", "Tiền upsize", "Tổng giá", "Ghi chú"
             }
         ));
         tblHoadonchitiet.setRowHeight(20);
@@ -410,6 +413,12 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane3.setViewportView(tblHoadonchitiet);
+        if (tblHoadonchitiet.getColumnModel().getColumnCount() > 0) {
+            tblHoadonchitiet.getColumnModel().getColumn(0).setMinWidth(70);
+            tblHoadonchitiet.getColumnModel().getColumn(1).setMinWidth(70);
+            tblHoadonchitiet.getColumnModel().getColumn(3).setMinWidth(70);
+            tblHoadonchitiet.getColumnModel().getColumn(5).setMinWidth(100);
+        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -419,9 +428,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
         );
 
         tabs.addTab("Hóa đơn chi tiết", jPanel3);
@@ -562,7 +569,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
 
         btnThemDo.setBackground(new java.awt.Color(0, 255, 0));
         btnThemDo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnThemDo.setText("Thêm đồ");
+        btnThemDo.setText("Chọn đồ uống");
         btnThemDo.setBorder(null);
         btnThemDo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -576,17 +583,33 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã Sản phẩm", "Tên sản phẩm", "Loại", "Giá giảm", "Giá gốc", "Kích cỡ", "Giá theo size"
+                "Mã Sản phẩm", "Tên sản phẩm", "Loại", "Giá giảm", "Giá gốc"
             }
         ));
         tblSanPham.setRowHeight(20);
         jScrollPane2.setViewportView(tblSanPham);
+        if (tblSanPham.getColumnModel().getColumnCount() > 0) {
+            tblSanPham.getColumnModel().getColumn(2).setHeaderValue("Loại");
+            tblSanPham.getColumnModel().getColumn(3).setHeaderValue("Giá giảm");
+            tblSanPham.getColumnModel().getColumn(4).setHeaderValue("Giá gốc");
+        }
+
+        tblSize.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tblSize.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Size", "Giá upsize"
+            }
+        ));
+        tblSize.setRowHeight(20);
+        jScrollPane5.setViewportView(tblSize);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
@@ -598,6 +621,11 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnThemDo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane2)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -616,7 +644,9 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                         .addGap(14, 14, 14)
                         .addComponent(btnThemDo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
@@ -1091,6 +1121,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lblBan;
     private javax.swing.JLabel lblMaHoaDon;
     private javax.swing.JLabel lblNgay;
@@ -1115,6 +1146,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblHoadon;
     private javax.swing.JTable tblHoadonchitiet;
     private javax.swing.JTable tblSanPham;
+    private javax.swing.JTable tblSize;
     private javax.swing.JTextField txtTimkiem;
     private javax.swing.JTextField txtTongTien;
     private javax.swing.JLabel txthientennhanvien;
@@ -1487,6 +1519,21 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
+    public void fillTableSize(){
+        DefaultTableModel model = (DefaultTableModel) tblSize.getModel();
+        model.setRowCount(0);
+        try {
+            List<DonViSanPham> list = DAODVSP.selectAll();
+            for(DonViSanPham dv : list){
+                model.addRow(new Object[]{
+                    dv.getTenDonvi(),dv.getThemTien()
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     DaoGiamGia DAOGG = new DaoGiamGia();
     ChiTietGiamGiaDao DAOGGCT = new ChiTietGiamGiaDao();
     public int GiaTheoSize(String masp){
@@ -1598,18 +1645,22 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 }
             }
             for (HoaDonChiTiet hdct : list) {
-                hdct.setGia(GiaTheoSize(hdct.getID_SanPHam()));
-                hdct.setTongGia(hdct.getGia() * hdct.getSoluong());
+//                hdct.setGia(GiaTheoSize(hdct.getID_SanPHam()));
+                hdct.setTongGia(GiaTheoSize(hdct.getID_SanPHam()) * hdct.getSoluong());
+                SanPham sp = DAOSP.selectID(hdct.getID_SanPHam());
                 model.addRow(new Object[]{
                     hdct.getID_Hoadon(),
                     hdct.getID_SanPHam(),
                     DAOSP.selecteByIDSP(hdct.getID_SanPHam()).getTen_sp(),
                     hdct.getSoluong(),
-                    hdct.getGia(),
+                    DAOSP.selecteByIDSP(hdct.getID_SanPHam()).getGia_sp(),
+                    DAODVSP.selectid_DVDU(sp.getId_donviSP()).getTenDonvi(),
+                    DAODVSP.selectid_DVDU(sp.getId_donviSP()).getThemTien(),
                     hdct.getTongGia(),
                     hdct.getGhiChu()
                 });
             }
+            
             tongTien(i);
         } catch (Exception e) {
             e.printStackTrace();

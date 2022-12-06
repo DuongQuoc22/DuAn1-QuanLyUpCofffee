@@ -60,4 +60,8 @@ public class DonViSanPham {
     public String toString(){
         return TenDonvi;
     }
+
+    public String getThemTien(String selectByName) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

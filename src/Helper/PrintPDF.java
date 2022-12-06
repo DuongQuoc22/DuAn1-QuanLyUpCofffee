@@ -20,6 +20,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.concurrent.Phaser;
 import javax.swing.GroupLayout;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
@@ -53,16 +54,25 @@ public class PrintPDF {
             document.add(title1);
             PdfPTable a = new PdfPTable(2);
             a.setSpacingBefore(35);
-
-            PdfPCell a1 = new PdfPCell(new Phrase("Mã đơn: " + hd.getIdHoaDon(), f2));
+            
+            PdfPCell a8 = new PdfPCell(new Phrase("Địa chỉ: 82 Dịch Vọng Hậu, Cầu Giấy, Hà Nội.", f2));
+            a.addCell(a8).setBorder(0);
+            PdfPCell a7 = new PdfPCell(new Phrase("", f2));
+            a.addCell(a7).setBorder(0);
+            
+            PdfPCell a1 = new PdfPCell(new Phrase("Người tạo: "+Auth.user.getTenNV(),f2));
             a.addCell(a1).setBorder(0);
-            PdfPCell a2 = new PdfPCell(new Phrase("", f2));
+            PdfPCell a6 = new PdfPCell(new Phrase("", f2));
+            a.addCell(a6).setBorder(0);
+            PdfPCell a2 = new PdfPCell(new Phrase("Mã đơn: " + hd.getIdHoaDon(), f2));
             a.addCell(a2).setBorder(0);
-
-            PdfPCell a3 = new PdfPCell(new Phrase("Ngày tạo: " + bctdao.selectByIdHD(mahd).get(0).getThoidiemCoNguoi(), f2));
+            PdfPCell a3 = new PdfPCell(new Phrase("", f2));
             a.addCell(a3).setBorder(0);
-            PdfPCell a4 = new PdfPCell(new Phrase(hd.getNgayTao() + "", f2));
+
+            PdfPCell a4 = new PdfPCell(new Phrase("Ngày tạo: " + bctdao.selectByIdHD(mahd).get(0).getThoidiemCoNguoi(), f2));
             a.addCell(a4).setBorder(0);
+            PdfPCell a5 = new PdfPCell(new Phrase(hd.getNgayTao() + "", f2));
+            a.addCell(a5).setBorder(0);
 
             PdfPTable t = new PdfPTable(4);
             t.setSpacingBefore(35);

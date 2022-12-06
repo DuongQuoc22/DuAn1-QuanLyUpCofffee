@@ -538,9 +538,9 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
 
     private void txtTenNVKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenNVKeyReleased
         // TODO add your handling code here:
-        fillTableSearch(txtTenNV.getText());
-        updateStatus();
-        row = -1;
+//        fillTableSearch(txtTenNV.getText());
+//        updateStatus();
+//        row = -1;
     }//GEN-LAST:event_txtTenNVKeyReleased
 
 

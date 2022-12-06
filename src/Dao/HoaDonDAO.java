@@ -30,12 +30,13 @@ public class HoaDonDAO implements InterfaceHoadon {
     String SELECT_ALL_SQL_HD_CTT_BY_ID_BAN = "SELECT * FROM dbo.HoaDon JOIN dbo.BanChiTiet ON BanChiTiet.ID_Hoadon = HoaDon.ID_Hoadon WHERE TTThanhtoan = 0 AND dbo.HoaDon.Trangthai = 1 AND  ID_Ban = ? ";
     String SELECT_ALL_SQL_HD_CTT = "SELECT * FROM dbo.HoaDon where Trangthai = 1 AND TTThanhtoan = 0";
     String SELECT_BY_ID_SQL = "SELECT * FROM dbo.HoaDon WHERE ID_Hoadon = ?";
+    String SELECT_ALL_SQL_trangthai = "SELECT * FROM dbo.HoaDon where Trangthai = 1 and ID_Nhanvien =?";
     String SELECT_ALL_SQL_trangthai1 = "SELECT * FROM dbo.HoaDon where Trangthai = 1";
-    String SELECT_ALL_SQL_trangthai1_chuathanhtoan = "SELECT * FROM dbo.HoaDon where Trangthai = 1 AND TTThanhtoan = 0";
-    String SELECT_ALL_SQL_trangthai1_dathanhtoan = "SELECT * FROM dbo.HoaDon where Trangthai = 1 AND TTThanhtoan = 1";
-    String SELECT_ALL_SQL_trangthai0 = "SELECT * FROM dbo.HoaDon where Trangthai = 0";
-    String SELECT_ALL_SQL_trangthai0_chuathanhtoan = "SELECT * FROM dbo.HoaDon where Trangthai = 0 AND TTThanhtoan = 0";
-    String SELECT_ALL_SQL_trangthai0_dathanhtoan = "SELECT * FROM dbo.HoaDon where Trangthai = 0 AND TTThanhtoan = 1";
+    String SELECT_ALL_SQL_trangthai1_chuathanhtoan = "SELECT * FROM dbo.HoaDon where Trangthai = 1 AND TTThanhtoan = 0 and ID_Nhanvien=?";
+    String SELECT_ALL_SQL_trangthai1_dathanhtoan = "SELECT * FROM dbo.HoaDon where Trangthai = 1 AND TTThanhtoan = 1 and ID_Nhanvien=?";
+    String SELECT_ALL_SQL_trangthai0 = "SELECT * FROM dbo.HoaDon where Trangthai = 0 and ID_Nhanvien=?";
+    String SELECT_ALL_SQL_trangthai0_chuathanhtoan = "SELECT * FROM dbo.HoaDon where Trangthai = 0 AND TTThanhtoan = 0 and ID_Nhanvien=?";
+    String SELECT_ALL_SQL_trangthai0_dathanhtoan = "SELECT * FROM dbo.HoaDon where Trangthai = 0 AND TTThanhtoan = 1 and ID_Nhanvien=?";
     String select_all_sql_find_HOATDOng = "select *from HoaDon where Ngaytao between ? and ? and Trangthai = 1";
     String select_all_sql_find_HOATDOng_chuathanhtoan = "select *from HoaDon where Ngaytao between ? and ? and Trangthai = 1 and TTThanhtoan = 0";
     String select_all_sql_find_HOATDOng_dathanhtoan = "select *from HoaDon where Ngaytao between ? and ? and Trangthai = 1 and TTThanhtoan = 1";
@@ -149,26 +150,30 @@ public class HoaDonDAO implements InterfaceHoadon {
     public List<Hoadon> selectAll_trangthai1() {
         return selectBySql(SELECT_ALL_SQL_trangthai1);
     }
-
-    public List<Hoadon> selectAll_trangthai1_chuathanhtoan() {
-        return selectBySql(SELECT_ALL_SQL_trangthai1_chuathanhtoan);
+    public List<Hoadon> selectByIdNV(String id){
+        return selectBySql(SELECT_ALL_SQL_trangthai, id);
+    }
+    public List<Hoadon> selectAll_trangthai1_chuathanhtoan(String id) {
+        return selectBySql(SELECT_ALL_SQL_trangthai1_chuathanhtoan,id);
     }
 
-    public List<Hoadon> selectAll_trangthai1_dathanhtoan() {
-        return selectBySql(SELECT_ALL_SQL_trangthai1_dathanhtoan);
+    public List<Hoadon> selectAll_trangthai1_dathanhtoan(String id) {
+        return selectBySql(SELECT_ALL_SQL_trangthai1_dathanhtoan,id);
     }
 
     @Override
     public List<Hoadon> selectAll_trangthai0() {
         return selectBySql(SELECT_ALL_SQL_trangthai0);
     }
-
-    public List<Hoadon> selectAll_trangthai0_chuathanhtoan() {
-        return selectBySql(SELECT_ALL_SQL_trangthai0_chuathanhtoan);
+    public List<Hoadon> selectAll_trangthai0v1(String id) {
+        return selectBySql(SELECT_ALL_SQL_trangthai0,id);
+    }
+    public List<Hoadon> selectAll_trangthai0_chuathanhtoan(String id) {
+        return selectBySql(SELECT_ALL_SQL_trangthai0_chuathanhtoan,id);
     }
 
-    public List<Hoadon> selectAll_trangthai0_dathanhtoan() {
-        return selectBySql(SELECT_ALL_SQL_trangthai0_dathanhtoan);
+    public List<Hoadon> selectAll_trangthai0_dathanhtoan(String id) {
+        return selectBySql(SELECT_ALL_SQL_trangthai0_dathanhtoan, id);
     }
 
     @Override

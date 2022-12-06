@@ -11,6 +11,7 @@ import View.QuanLyHoaDonJPanel;
 import java.util.ArrayList;
 import java.util.List;
 import Dao.HoaDonDAO;
+import Helper.Auth;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -27,7 +28,7 @@ public class SerHoaDon {
         DefaultTableModel model = (DefaultTableModel) QuanLyHoaDonJPanel.tblHoadon.getModel();
         model.setRowCount(0);
         try {
-            list = dao.selectAll_trangthai1();
+            list = dao.selectByIdNV(Auth.user.getId_Nhanvien());
             for (Hoadon hd : list) {
                 model.addRow(new Object[]{
                     hd.getIdHoaDon(),
@@ -49,7 +50,7 @@ public class SerHoaDon {
         DefaultTableModel model = (DefaultTableModel) QuanLyHoaDonJPanel.tblHoadon.getModel();
         model.setRowCount(0);
         try {
-            list = dao.selectAll_trangthai1_chuathanhtoan();
+            list = dao.selectAll_trangthai1_chuathanhtoan(Auth.user.getId_Nhanvien());
             for (Hoadon hd : list) {
                 model.addRow(new Object[]{
                     hd.getIdHoaDon(),
@@ -71,7 +72,7 @@ public class SerHoaDon {
         DefaultTableModel model = (DefaultTableModel) QuanLyHoaDonJPanel.tblHoadon.getModel();
         model.setRowCount(0);
         try {
-            list = dao.selectAll_trangthai1_dathanhtoan();
+            list = dao.selectAll_trangthai1_dathanhtoan(Auth.user.getId_Nhanvien());
             for (Hoadon hd : list) {
                 model.addRow(new Object[]{
                     hd.getIdHoaDon(),
@@ -94,7 +95,7 @@ public class SerHoaDon {
         DefaultTableModel model = (DefaultTableModel) QuanLyHoaDonJPanel.tblhuydon.getModel();
         model.setRowCount(0);
         try {
-            list = dao.selectAll_trangthai0();
+            list = dao.selectAll_trangthai0v1(Auth.user.getId_Nhanvien());
             for (Hoadon hd : list) {
                 model.addRow(new Object[]{
                     hd.getIdHoaDon(),
@@ -117,7 +118,7 @@ public class SerHoaDon {
         DefaultTableModel model = (DefaultTableModel) QuanLyHoaDonJPanel.tblhuydon.getModel();
         model.setRowCount(0);
         try {
-            list = dao.selectAll_trangthai0_chuathanhtoan();
+            list = dao.selectAll_trangthai0_chuathanhtoan(Auth.user.getId_Nhanvien());
             for (Hoadon hd : list) {
                 model.addRow(new Object[]{
                     hd.getIdHoaDon(),
@@ -140,7 +141,7 @@ public class SerHoaDon {
         DefaultTableModel model = (DefaultTableModel) QuanLyHoaDonJPanel.tblhuydon.getModel();
         model.setRowCount(0);
         try {
-            list = dao.selectAll_trangthai0_dathanhtoan();
+            list = dao.selectAll_trangthai0_dathanhtoan(Auth.user.getId_Nhanvien());
             for (Hoadon hd : list) {
                 model.addRow(new Object[]{
                     hd.getIdHoaDon(),

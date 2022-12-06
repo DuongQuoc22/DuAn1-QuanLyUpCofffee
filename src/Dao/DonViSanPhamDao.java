@@ -68,6 +68,14 @@ public class DonViSanPhamDao implements InterfaceDonViSanPham{
 //    public String selectNameByID(String id) {
 //        return selectBySQL(selectId, id).get(0).getTenDonvi();
 //    }
+    public DonViSanPham selectGiaupsize(String id){
+        String sql = "select ThemTien where ID_DonviSP=?";
+       List<DonViSanPham> dv = this.selectBySQL(sql, id);
+       if(dv.isEmpty()){
+           return null;
+       }
+       return dv.get(0);
+    }
     public String selectByName(String name){
         String sql = "select * from DonViSanPham where TenDonvi = ?";
         return selectBySQL(sql, name).get(0).getID_DonviSP();

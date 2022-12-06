@@ -1,30 +1,44 @@
 package View;
 
+import Dao.BanDao;
 import Dao.ChiTietGiamGiaDao;
 import Dao.DaoGiamGia;
+import Dao.HoaDonDAO;
 import Dao.HoadonchitietDAO;
 import Dao.SanPhamDao;
 import Model.GiamGiaChiTiet;
 import Model.HoaDonChiTiet;
 import Model.SanPham;
 import Model.GiamGia;
+import Model.Hoadon;
 import static View.NhapsoluongSanPhamJDialog.MASP;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import java.util.List;
 
 public class SuaSoLuongSanPhamHDCTJDialog extends javax.swing.JDialog {
-
+    static String MASP;
+    static int MAHOADON;
+     BanDao DAOBAN = new BanDao();
+     HoaDonDAO hdd = new HoaDonDAO();
     public SuaSoLuongSanPhamHDCTJDialog(java.awt.Frame parent, boolean modal, String masp, int MAHD) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         MASP = masp;
         MAHOADON = MAHD;
+        Hoadon hd = hdd.selectById(MAHD);
+        int idBan = DAOBAN.selectIDHD(hd.getIdHoaDon()).getIdBan();
+        List<HoaDonChiTiet> hdct = HDCT.selectByIDBan(idBan);
+        
+       for(HoaDonChiTiet x : hdct){
+           x.getSoluong();
+           txtSoluongSP.setText(x.getSoluong()+"");
+       }
+        
     }
-    static String MASP;
-    static int MAHOADON;
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -53,7 +67,11 @@ public class SuaSoLuongSanPhamHDCTJDialog extends javax.swing.JDialog {
             }
         });
 
-        txtSoluongSP.setText("1");
+        txtSoluongSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSoluongSPActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(243, 182, 124));
@@ -145,12 +163,17 @@ SanPhamDao DAOSP = new SanPhamDao();
             return;
         }
         HoaDonChiTiet hdct = new HoaDonChiTiet();
+//        HoaDonChiTiet hd = DAOHDCHITIET.selectById(hdct.getID_Hoadon(), hdct.getID_SanPHam());
+//       txtSoluongSP.setText(hd.getSoluong()+""); 
         hdct.setID_Hoadon(MAHOADON);
         hdct.setID_SanPHam(MASP);
+       
         hdct.setSoluong(Integer.parseInt(txtSoluongSP.getText()));
+        System.out.println(hdct.getSoluong());
+//        txtSoluongSP.setText(hdct.getSoluong()+"");
         SanPham sp = DAOSP.selectID(MASP);
         int gia = SanPhamGiamGia(sp.getId_sp(), sp.getGia_sp()) == 0 ? sp.getGia_sp() : SanPhamGiamGia(sp.getId_sp(), sp.getGia_sp());
-        System.out.println(gia);
+        //System.out.println(gia);
         hdct.setGia(gia);
         int tongGia = gia * Integer.parseInt(txtSoluongSP.getText());
         hdct.setTongGia(tongGia);
@@ -163,6 +186,11 @@ SanPhamDao DAOSP = new SanPhamDao();
         // TODO add your handling code here
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void txtSoluongSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoluongSPActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtSoluongSPActionPerformed
 
     /**
      * @param args the command line arguments

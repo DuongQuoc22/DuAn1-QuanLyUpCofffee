@@ -5,9 +5,11 @@
  */
 package View;
 
+import Dao.BanDao;
 import Dao.ChiTietGiamGiaDao;
 import Dao.DaoGiamGia;
 import Dao.DonViSanPhamDao;
+import Dao.HoaDonDAO;
 import Dao.HoadonchitietDAO;
 import Dao.SanPhamDao;
 import Model.DonViSanPham;
@@ -15,9 +17,12 @@ import Model.GiamGiaChiTiet;
 import Model.HoaDonChiTiet;
 import Model.SanPham;
 import Model.GiamGia;
+import Model.Hoadon;
 import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,6 +34,17 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
     /**
      * Creates new form NhapsoluongSanPhamJDialog
      */
+    static String MASP;
+    static int MAHOADON;
+    DonViSanPhamDao daodv = new DonViSanPhamDao();
+    List<DonViSanPham> listdv;
+    DaoGiamGia DAOGG = new DaoGiamGia();
+    ChiTietGiamGiaDao DAOGGCT = new ChiTietGiamGiaDao();
+    SanPhamDao DAOSP = new SanPhamDao();
+    DonViSanPhamDao DAODVSP = new DonViSanPhamDao();
+    BanDao DAOBAN = new BanDao();
+    HoaDonDAO hdd = new HoaDonDAO();
+    HoadonchitietDAO HDCT = new HoadonchitietDAO();
     public NhapsoluongSanPhamJDialog(java.awt.Frame parent, boolean modal,String masp, int MAHD) {
         super(parent, modal);
         initComponents();
@@ -36,9 +52,17 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         MASP = masp;
         MAHOADON = MAHD;
+        fillcomboDonVi();
+        Hoadon hd = hdd.selectById(MAHD);
+        int idBan = DAOBAN.selectIDHD(hd.getIdHoaDon()).getIdBan();
+        List<HoaDonChiTiet> hdct = HDCT.selectByIDBan(idBan);
+        
+       for(HoaDonChiTiet x : hdct){
+           x.getSoluong();
+           txtSoluong.setText(x.getSoluong()+"");
+       }
     }
-    static String MASP;
-    static int MAHOADON;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,6 +80,8 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtghiChu = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        cboDonvi = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(250, 182, 124));
@@ -65,7 +91,6 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(243, 170, 49)));
 
         txtSoluong.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        txtSoluong.setText("1");
 
         btnNhap.setBackground(new java.awt.Color(255, 255, 255));
         btnNhap.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -98,6 +123,17 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText("Size");
+
+        cboDonvi.setBackground(new java.awt.Color(225, 193, 144));
+        cboDonvi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cboDonvi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboDonviActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -106,22 +142,27 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSoluong, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(33, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtSoluong, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addContainerGap())))
+                                .addComponent(jLabel3))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addContainerGap())))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addComponent(btnNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(cboDonvi, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,14 +173,21 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
                         .addComponent(jLabel1))
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addComponent(txtSoluong, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtSoluong, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboDonvi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,13 +198,14 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     HoadonchitietDAO DAOHDCT = new HoadonchitietDAO();
-    SanPhamDao DAOSP = new SanPhamDao();
     private void btnNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapActionPerformed
         // TODO add your handling code here:
         if (checknumber()) return;
@@ -168,7 +217,10 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
         hdct.setID_Hoadon(MAHOADON);
         hdct.setID_SanPHam(MASP);
         hdct.setSoluong(Integer.parseInt(txtSoluong.getText()));
+        txtSoluong.setText(hdct.getSoluong()+"");
         SanPham sp = DAOSP.selectID(MASP);
+        sp.setId_donviSP(daodv.selectByName(cboDonvi.getSelectedItem()+""));
+        DAOSP.update(sp);
         int gia = GiaTheoSize(MASP);
         hdct.setGia(gia);
         int tongGia = gia * Integer.parseInt(txtSoluong.getText());
@@ -184,6 +236,11 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void cboDonviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDonviActionPerformed
+//        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_cboDonviActionPerformed
     public boolean checknumber(){
         try {
             int i = Integer.parseInt(txtSoluong.getText());
@@ -242,9 +299,11 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNhap;
+    private javax.swing.JComboBox<String> cboDonvi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtSoluong;
@@ -252,10 +311,10 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     
     public int GiaTheoSize(String masp){
-          DaoGiamGia DAOGG = new DaoGiamGia();
-            ChiTietGiamGiaDao DAOGGCT = new ChiTietGiamGiaDao();
-            SanPhamDao DAOSP = new SanPhamDao();
-            DonViSanPhamDao DAODVSP = new DonViSanPhamDao();
+//          DaoGiamGia DAOGG = new DaoGiamGia();
+//            ChiTietGiamGiaDao DAOGGCT = new ChiTietGiamGiaDao();
+//            SanPhamDao DAOSP = new SanPhamDao();
+//            DonViSanPhamDao DAODVSP = new DonViSanPhamDao();
         GiamGiaChiTiet ggct = DAOGGCT.selectbyIDSP(masp);
         SanPham sp = new SanPham();
         DonViSanPham dvdu = new DonViSanPham();
@@ -272,8 +331,6 @@ public class NhapsoluongSanPhamJDialog extends javax.swing.JDialog {
           return gia;
     }
     
-DaoGiamGia DAOGG = new DaoGiamGia();
-ChiTietGiamGiaDao DAOGGCT = new ChiTietGiamGiaDao();
 public int SanPhamGiamGia(String masp, int gia){
     GiamGiaChiTiet ggct = DAOGGCT.selectbyIDSP(masp);
     if (ggct == null) {
@@ -328,4 +385,14 @@ public int SanPhamGiamGia(String masp, int gia){
     }
     return 0;
 }
+    
+
+    private void fillcomboDonVi() {
+        DefaultComboBoxModel modelDV = (DefaultComboBoxModel) cboDonvi.getModel();
+        modelDV.removeAllElements();
+        listdv = daodv.selectAll();
+        for (DonViSanPham donviDoUong : listdv) {
+            modelDV.addElement(donviDoUong.toString());
+        }
+    }
 }

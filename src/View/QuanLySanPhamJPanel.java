@@ -48,7 +48,8 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         initComponents();
         init();
         model = (DefaultTableModel) tblSanPhansd.getModel();
-
+        cboDonvi.setEditable(false);
+        cboDonvi.setEnabled(false);
         filltotableSP();
         modelspkd = (DefaultTableModel) tblSanPHamksd.getModel();
         filltotableSPKD();
@@ -58,6 +59,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
     private void init(){
         fillcomboboxLoaiSP();
         fillcomboDonVi();
+        DAOSP.update_size2(daodv.selectByName(cboDonvi.getSelectedItem()+""));
         if(Auth.isManager()== false){
             btnThem.setVisible(false);
             btnSua.setVisible(false);
@@ -240,6 +242,11 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         jLabel2.setBounds(450, 120, 100, 17);
 
         txtMaSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtMaSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaSPActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtMaSP);
         txtMaSP.setBounds(450, 140, 228, 30);
 
@@ -518,17 +525,13 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
 
     private void txtTenSPKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTenSPKeyReleased
         // TODO add your handling code here:
-        CheckSPInuput();
+        //CheckSPInuput();
     }//GEN-LAST:event_txtTenSPKeyReleased
 
     private void lblHinhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhMouseClicked
         // TODO add your handling code here:
         chooseImages();
     }//GEN-LAST:event_lblHinhMouseClicked
-
-    private void cboDonviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDonviActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboDonviActionPerformed
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         // TODO add your handling code here:
@@ -617,15 +620,23 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         fillcomboboxLoaiSP();
     }//GEN-LAST:event_btndonviActionPerformed
 
+    private void txtTenSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenSPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenSPActionPerformed
+
+    private void cboDonviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDonviActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboDonviActionPerformed
+
     private void btnloaidouongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloaidouongActionPerformed
         // TODO add your handling code here:
         new QLDonViDoUongJDialog(null, true).setVisible(true);
         fillcomboDonVi();
     }//GEN-LAST:event_btnloaidouongActionPerformed
 
-    private void txtTenSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenSPActionPerformed
+    private void txtMaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTenSPActionPerformed
+    }//GEN-LAST:event_txtMaSPActionPerformed
     
     
     private void filltotableSP(){
@@ -698,7 +709,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
         sp.setId_sp(txtMaSP.getText());
         sp.setTen_sp(txtTenSP.getText());
         sp.setId_loaiSP(daolsp.selectIdByName(cboLoaidouong.getSelectedItem() + ""));
-        System.out.println(sp.getId_loaiSP());
+        //System.out.println(sp.getId_loaiSP());
         sp.setGia_sp(Integer.parseInt(txtGia.getText()));
         sp.setTrangthai(rdosd.isSelected());
         sp.setId_donviSP(daodv.selectByName(cboDonvi.getSelectedItem() + ""));

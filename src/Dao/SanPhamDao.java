@@ -16,7 +16,9 @@ import java.sql.ResultSet;
 public class SanPhamDao implements InterfaceSanPham{
     
    String insert = "insert into dbo.SanPham(ID_Sanpham,TenSP,Gia,ID_DonviSP,ID_LoaiSP,Trangthai,Hinh) values(?,?,?,?,?,?,?)";
-
+//String insert = "insert into dbo.SanPham(ID_Sanpham,TenSP,Gia,ID_DonviSP,ID_LoaiSP,Trangthai,Hinh) values(?,?,?,DV1,?,?,?)";
+String update_size = "update SanPham set ID_DonviSP=? where ID_Sanpham=?";
+String update_size2 = "update SanPham set ID_DonviSP=?";
     String update = "update SanPham set TenSP = ? , Gia =? ,ID_DonviSP=?,"
             + "ID_LoaiSP =?, Trangthai=?  ,Hinh= ? where ID_Sanpham=?";
 
@@ -41,7 +43,7 @@ public class SanPhamDao implements InterfaceSanPham{
     @Override
     public void insert(SanPham sp) {
 
-        JDBCHeper.update(insert, sp.getId_sp(), sp.getTen_sp(), sp.getGia_sp(), sp.getId_donviSP(),
+        JDBCHeper.update(insert, sp.getId_sp(), sp.getTen_sp(), sp.getGia_sp(),sp.getId_donviSP(),
                 sp.getId_loaiSP(), sp.isTrangthai(), sp.getHinh());
     }
 
@@ -50,7 +52,14 @@ public class SanPhamDao implements InterfaceSanPham{
         JDBCHeper.update(update, sp.getTen_sp(), sp.getGia_sp(), sp.getId_donviSP(),
                 sp.getId_loaiSP(), sp.isTrangthai(), sp.getHinh(), sp.getId_sp());
     }
-
+    
+    public void update_size(String size, String idSP){
+        JDBCHeper.update(update_size, size,idSP);
+    }
+    
+    public void update_size2(String size){
+        JDBCHeper.update(update_size2, size);
+    }
     @Override
     public void delete(String id) {
         JDBCHeper.update(update_trangtrai, id);

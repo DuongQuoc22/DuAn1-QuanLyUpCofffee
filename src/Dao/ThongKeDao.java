@@ -63,7 +63,7 @@ public class ThongKeDao {
     String sql_doanhthutong_ngay_table = "select  TenSP,sum(h.Soluong) as N'Số Lượng',sum(h.TongGia) as N'Tổng Tiền1' from HoaDon d join HoaDonChiTiet h \n" +
 "            on h.ID_HoaDon=d.ID_Hoadon  join SanPham s on h.ID_SanPham=s.ID_Sanpham where  d.Trangthai=1 and  d.TTThanhtoan=1 and  h.TTthanhtoan=1 and day(Ngaytao)=day(getdate())\n" +
 "            GROUP BY TenSP";
-    String sql_doanhthutong_Thang_table = "select  TenSP,sum(h.Soluong) as N'Số Lượng',sum(h.TongGia) as N'Tổng Tiền1' from HoaDon d join HoaDonChiTiet h \n" +
+    String sql_doanhthutong_Thang_table = "select TenSP,sum(h.Soluong) as N'Số Lượng',sum(h.TongGia) as N'Tổng Tiền1' from HoaDon d join HoaDonChiTiet h \n" +
 "            on h.ID_HoaDon=d.ID_Hoadon  join SanPham s on h.ID_SanPham=s.ID_Sanpham where  d.Trangthai=1 and  d.TTThanhtoan=1 and  h.TTthanhtoan=1 and month(Ngaytao)=month(getdate())\n" +
 "            GROUP BY TenSP";
     String sql_doanhthutong_nam_table = "select  TenSP,sum(h.Soluong) as N'Số Lượng',sum(h.TongGia) as N'Tổng Tiền1' from HoaDon d join HoaDonChiTiet h \n" +
