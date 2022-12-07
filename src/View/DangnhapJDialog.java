@@ -10,6 +10,7 @@ import Model.*;
 import Helper.Auth;
 import Helper.MsgBox;
 import java.awt.Color;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -30,7 +31,7 @@ public class DangnhapJDialog extends javax.swing.JDialog {
     }
 
     NhanVienDAO dao = new NhanVienDAO();
-
+    private Pattern pattern;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -215,7 +216,11 @@ public class DangnhapJDialog extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        dangNhap();
+        if(check()){
+            return;
+        }else{
+            dangNhap();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -296,17 +301,63 @@ public class DangnhapJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 
-    private void dangNhap() {
-        String manv = txtUserName.getText();
-        String matKhau = new String(jPasswordField1.getPassword());
+//    public void Check(){
+//        if(txtUserName.getText().equals("") || jPasswordField1.getPassword().length==0){
+//            if(txtUserName.getText().equals("")){
+//                JOptionPane.showMessageDialog(this, "Vui lòng nhập tài khoản!");
+//                txtUserName.requestFocus();
+//                return;
+//            }else if(jPasswordField1.getPassword().length==0){
+//                JOptionPane.showMessageDialog(this, "Vui lòng nhập mật khẩu!");
+//                jPasswordField1.requestFocus();
+//                return;
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Chưa nhập thông tin đăng nhập!");
+//                txtUserName.requestFocus();
+//                return;
+//            }
+//        }
+//    }
+    public boolean check(){
+        String manv = txtUserName.getText().trim();
+        String matKhau = new String(jPasswordField1.getPassword()).trim();
         NhanVien nhanVien = dao.selectByAccount(manv);
-        if (nhanVien == null) {
-            JOptionPane.showMessageDialog(this, " Sai tên đăng nhập");
+        if (txtUserName.getText().equals("") && jPasswordField1.getPassword().length == 0) {
+
+            JOptionPane.showMessageDialog(this, "Chưa nhập thông tin đăng nhập!");
             txtUserName.requestFocus();
-        } else if (!matKhau.equals(nhanVien.getPass())) {
+            return true;
+
+        } else if (txtUserName.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tài khoản!");
+            txtUserName.requestFocus();
+            return true;
+        }else if(txtUserName.getText().matches("[^A-Za-z0-9]")){
+            JOptionPane.showMessageDialog(this, "Tài khoản chứa ký tự đặc biệt!");
+            return true;
+        }
+        else if (jPasswordField1.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập mật khẩu!");
+            jPasswordField1.requestFocus();
+            return true;
+        }
+        else if(nhanVien == null){
+                JOptionPane.showMessageDialog(this, "Sai tài khoản");
+                return true;
+            }
+        else if (!matKhau.equals(nhanVien.getPass())) {
             JOptionPane.showMessageDialog(this, " Sai mật khẩu");
             jPasswordField1.requestFocus();
-        } else {
+            return true;
+        }
+        return false;
+    }
+   
+    private void dangNhap() {
+        String manv = txtUserName.getText().trim();
+        String matKhau = new String(jPasswordField1.getPassword()).trim();
+        NhanVien nhanVien = dao.selectByAccount(manv);
+
             Auth.user = nhanVien;
             if(nhanVien.isTrangThai() == true){
                 if(Auth.isManager() == true){
@@ -325,11 +376,12 @@ public class DangnhapJDialog extends javax.swing.JDialog {
                 }else{
                     System.exit(0);
                 }
-               
             }
             this.dispose();
+            
         }
-    }
+    
+    
 
     private void ketThuc() {
         System.exit(0);

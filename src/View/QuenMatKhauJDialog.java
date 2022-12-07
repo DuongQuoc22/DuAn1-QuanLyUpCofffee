@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Properties;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -34,6 +36,8 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        //txtMaxacnhan.setEditable(false);
+        //txtMaxacnhan.setEnabled(false);
 
     }
 
@@ -203,7 +207,7 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
                 msg.setText("Mã OTP:" + code+"\nĐây là mật khẩu mới của bạn. Vui lòng không để lộ thông tin này!");
                 Transport.send(msg);
                 JOptionPane.showMessageDialog(this, "Đã gửi!");
-
+                txtMaxacnhan.setEnabled(true);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -212,8 +216,12 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
 
     private void btnxacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxacnhanActionPerformed
         // TODO add your handling code here:
-        Comfimcode();
-        dispose();
+        //Comfimcode();
+            if(checkOTP()){
+                return;
+            }else{
+                Comfimcode();
+            }
     }//GEN-LAST:event_btnxacnhanActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
@@ -277,10 +285,17 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtMaxacnhan;
     // End of variables declaration//GEN-END:variables
 
+   
     NhanVienDAO daonv = new NhanVienDAO();
 
     private boolean checkmail() {
-        if (txtEmail.getText().equals("")) {
+        String EMAIL_REGEX = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+         
+        String mail = txtEmail.getText().trim();
+        if(mail.matches(EMAIL_REGEX)== false){
+            JOptionPane.showMessageDialog(this, "Định dạng email không hợp lệ!");
+                    return true;
+        }else if (txtEmail.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Chưa nhập email");
             return true;
         } else if (daonv.selectByEmail(txtEmail.getText()) == null) {
@@ -296,19 +311,33 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         int numbercode = rd.nextInt(10000) + 1000;
         return String.valueOf(numbercode);
     }
-
-    private void Comfimcode() {
+    
+    public boolean checkOTP(){
         if (txtMaxacnhan.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Mã xác nhận trống");
-            return;
-        } else if (txtMaxacnhan.getText().equals(code)) {
-            JOptionPane.showMessageDialog(this, "Mật khẩu đã được thay đổi!");
+            return true;
+        }else if(txtMaxacnhan.getText().matches("[0-9]")){
+            JOptionPane.showMessageDialog(rootPane, "Mã OTP sai định dạng!");
+            return true;
+        }
+        
+         return false;
+    }
+    
+    private void Comfimcode() {
+        if(txtMaxacnhan.getText().equals(code)){
+            JOptionPane.showMessageDialog(this, "Mật khẩu đã được thay đổi!\n Mật khẩu mới của bạn là: "+code);
             daonv.update_pass(code,daonv.selectByEmail(txtEmail.getText()));
+            dispose();
             new DangnhapJDialog(new javax.swing.JFrame(), true).setVisible(true);
+            return ;
+        }else if(!txtMaxacnhan.getText().equals(code)){
+            JOptionPane.showMessageDialog(this, "Mã OTP không chính xác! Hoặc sai định dạng");
+            txtMaxacnhan.requestFocus();
             return;
-        } else {
-            JOptionPane.showMessageDialog(this, "Mã OTP không chính xác");
-
+        }else{
+            return;
         }
     }
 }
+

@@ -526,7 +526,9 @@ public class main extends javax.swing.JFrame {
     private void mnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnThoatActionPerformed
        
        
-             Auth.clear();
+        int result = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn thoát khỏi phiên làm việc?", "UPCOFFEE", JOptionPane.YES_NO_OPTION);
+        if(result == JOptionPane.YES_OPTION){
+            Auth.clear();
              lblNameNV.setText("Wellcome Here!");
              DangnhapJDialog b = new DangnhapJDialog(null, true);
              
@@ -534,6 +536,15 @@ public class main extends javax.swing.JFrame {
             if(Auth.isLogin()==true){
                 lblNameNV.setText(Auth.user.getTenNV());
             }
+        }
+//             Auth.clear();
+//             lblNameNV.setText("Wellcome Here!");
+//             DangnhapJDialog b = new DangnhapJDialog(null, true);
+//             
+//            b.setVisible(true);
+//            if(Auth.isLogin()==true){
+//                lblNameNV.setText(Auth.user.getTenNV());
+//            }
        
     }//GEN-LAST:event_mnThoatActionPerformed
 
