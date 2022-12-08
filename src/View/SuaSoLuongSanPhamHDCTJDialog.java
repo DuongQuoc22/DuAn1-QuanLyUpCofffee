@@ -28,16 +28,20 @@ public class SuaSoLuongSanPhamHDCTJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         MASP = masp;
         MAHOADON = MAHD;
-        Hoadon hd = hdd.selectById(MAHD);
-        int idBan = DAOBAN.selectIDHD(hd.getIdHoaDon()).getIdBan();
-        List<HoaDonChiTiet> hdct = HDCT.selectByIDBan(idBan);
         
-       for(HoaDonChiTiet x : hdct){
-           x.getSoluong();
-           txtSoluongSP.setText(x.getSoluong()+"");
-       }
         
     }
+//    public int soluong(){
+//        Hoadon hd = hdd.selectById(MAHOADON);
+//        int idBan = DAOBAN.selectIDHD(hd.getIdHoaDon()).getIdBan();
+//        List<HoaDonChiTiet> hdct = HDCT.selectByIDBan(idBan);
+//        
+//       for(HoaDonChiTiet x : hdct){
+//           x.getSoluong();
+//           txtSoluongSP.setText(x.getSoluong()+"");
+//       }
+//       return ;
+//    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -162,14 +166,15 @@ SanPhamDao DAOSP = new SanPhamDao();
             JOptionPane.showMessageDialog(this, "Chưa nhập sô lượng!");
             return;
         }
-        HoaDonChiTiet hdct = new HoaDonChiTiet();
-//        HoaDonChiTiet hd = DAOHDCHITIET.selectById(hdct.getID_Hoadon(), hdct.getID_SanPHam());
-//       txtSoluongSP.setText(hd.getSoluong()+""); 
-        hdct.setID_Hoadon(MAHOADON);
+
+          HoaDonChiTiet hdct = HDCT.selectById(MAHOADON, MASP);
+           hdct.setID_Hoadon(MAHOADON);
         hdct.setID_SanPHam(MASP);
-       
-        hdct.setSoluong(Integer.parseInt(txtSoluongSP.getText()));
-        System.out.println(hdct.getSoluong());
+        int slnew = hdct.getSoluong() + Integer.parseInt(txtSoluongSP.getText());
+        hdct.setSoluong(slnew);
+        System.out.println("slnew: "+slnew);
+        
+        
 //        txtSoluongSP.setText(hdct.getSoluong()+"");
         SanPham sp = DAOSP.selectID(MASP);
         int gia = SanPhamGiamGia(sp.getId_sp(), sp.getGia_sp()) == 0 ? sp.getGia_sp() : SanPhamGiamGia(sp.getId_sp(), sp.getGia_sp());
@@ -250,8 +255,8 @@ SanPhamDao DAOSP = new SanPhamDao();
 public boolean checknumber() {
         try {
             int i = Integer.parseInt(txtSoluongSP.getText());
-            if (i < 0 || i == 0) {
-                JOptionPane.showMessageDialog(this, "số lượng ít nhất bằng 1 và số lượng không âm");
+            if (txtSoluongSP.getText().matches("[^0-9]")) {
+                JOptionPane.showMessageDialog(this, "Không được nhập ký tự đặc biệt");
                 return true;
             }
         } catch (Exception e) {

@@ -56,6 +56,7 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("UPCOFFEE - Đăng Nhập");
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -322,6 +323,7 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         String manv = txtUserName.getText().trim();
         String matKhau = new String(jPasswordField1.getPassword()).trim();
         NhanVien nhanVien = dao.selectByAccount(manv);
+        Pattern regex = Pattern.compile("[^A-Za-z0-9]");
         if (txtUserName.getText().equals("") && jPasswordField1.getPassword().length == 0) {
 
             JOptionPane.showMessageDialog(this, "Chưa nhập thông tin đăng nhập!");
@@ -331,14 +333,21 @@ public class DangnhapJDialog extends javax.swing.JDialog {
         } else if (txtUserName.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập tài khoản!");
             txtUserName.requestFocus();
-            return true;
-        }else if(txtUserName.getText().matches("[^A-Za-z0-9]")){
+            return true;}
+        else if(regex.matcher(manv).find()){
             JOptionPane.showMessageDialog(this, "Tài khoản chứa ký tự đặc biệt!");
+            txtUserName.setText("");
+            txtUserName.requestFocus();
             return true;
         }
         else if (jPasswordField1.getPassword().length == 0) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập mật khẩu!");
             jPasswordField1.requestFocus();
+            return true;
+        }else if(regex.matcher(matKhau).find()){
+             JOptionPane.showMessageDialog(this, "Mật khẩu chứa ký tự đặc biệt!");
+             jPasswordField1.setText("");
+             jPasswordField1.requestFocus();
             return true;
         }
         else if(nhanVien == null){

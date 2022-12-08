@@ -59,7 +59,7 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
     private void init(){
         fillcomboboxLoaiSP();
         fillcomboDonVi();
-        DAOSP.update_size2(daodv.selectByName(cboDonvi.getSelectedItem()+""));
+        //DAOSP.update_size2(daodv.selectByName(cboDonvi.getSelectedItem()+""));
         if(Auth.isManager()== false){
             btnThem.setVisible(false);
             btnSua.setVisible(false);
@@ -832,6 +832,22 @@ public class QuanLySanPhamJPanel extends javax.swing.JPanel {
 
     }
     
+    public boolean checkRegex(){
+        Pattern regex = Pattern.compile("[^A-Za-z0-9]");
+        Pattern regex2 = Pattern.compile("[a-zA-Z]");
+        if(regex.matcher(txtTenSP.getText()).find()){
+            JOptionPane.showMessageDialog(this, "Tên sản phẩm chứa ký tự đặc biệt, vui lòng xem lại!");
+            txtTenSP.requestFocus();
+            return false;
+        }
+        if(regex2.matcher(txtGia.getText()).find()){
+            JOptionPane.showMessageDialog(this, "Giá chỉ nhận giá trị số, vui lòng nhập lại!");
+            txtGia.setText("");
+            txtGia.requestFocus();
+            return false;
+        }
+        return true;
+    }
     private boolean CheckNumber() {
         String regex = "SP\\d+";
         String regexx = "sp\\d+";

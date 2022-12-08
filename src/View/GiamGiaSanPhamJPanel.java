@@ -49,9 +49,18 @@ public class GiamGiaSanPhamJPanel extends javax.swing.JPanel {
         giamgiachitiet = (DefaultTableModel) tblSanPhamgiamchitiet.getModel();
         jPanel2.setVisible(false);
 //        fillcomboboxEvent();
+        authen();
 
     }
-
+    public void authen(){
+        if(Auth.isManager() == false){
+            btnThem.setEnabled(false);
+            btnSua.setEnabled(false);
+            btnXoa.setEnabled(false);
+            btngiahan.setEnabled(false);
+            jButton1.setEnabled(false);
+        }
+    }
     private void fillcomboboxEvent() {
         DefaultComboBoxModel cbomodel = (DefaultComboBoxModel) cbohansukien.getModel();
         cbomodel.removeAllElements();

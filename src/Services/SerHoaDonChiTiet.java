@@ -32,21 +32,22 @@ public class SerHoaDonChiTiet {
         try {
           list= dao.selectById1(a);
            for (HoaDonChiTiet hd : list) {
-               hd.setGia(GiaTheoSize(hd.getID_SanPHam()));
-               hd.setTongGia(hd.getGia() * hd.getSoluong());
+//               hd.setGia(GiaTheoSize(hd.getID_SanPHam()));
+//               hd.setTongGia(hd.getGia() * hd.getSoluong());
                 model.addRow(new Object[]{
                     hd.getID_Hoadon(),
                     hd.getID_SanPHam(),
                     hd.getSoluong(),
+//                    GiaTheoSize(hd.getID_SanPHam()),
+//                    GiaTheoSize(hd.getID_SanPHam()) * hd.getSoluong(),
                     hd.getGia(),
-                    hd.getTongGia(),
+                    hd.getTongGia()* hd.getSoluong(),
                     hd.isTrangThai() ?"" : "Hủy",
                         hd.getLyDoHuy()
                     
                 });
                  
             }
-          
        } catch (Exception e) {
        }
     }

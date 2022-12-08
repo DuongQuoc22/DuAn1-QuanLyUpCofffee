@@ -52,9 +52,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class QuanLyBanHangJPanel extends javax.swing.JPanel {
 
+    Locale vn = new Locale("vi", "VN");
     public QuanLyBanHangJPanel() {
         initComponents();
         getDateNow();
@@ -368,7 +371,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã HĐ", "Ngày", "Thanh toán", "Người tạo", "Tổng tiền", "Bàn", "SĐT khách hàng"
+                "Mã HĐ", "Ngày", "Thanh toán", "Người tạo", "Tổng tiền (VND)", "Bàn", "SĐT khách hàng"
             }
         ));
         tblHoadon.setRowHeight(20);
@@ -583,16 +586,11 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Mã Sản phẩm", "Tên sản phẩm", "Loại", "Giá giảm", "Giá gốc"
+                "Mã Sản phẩm", "Tên sản phẩm", "Loại", "Giá giảm (VND)", "Giá gốc (VND)"
             }
         ));
         tblSanPham.setRowHeight(20);
         jScrollPane2.setViewportView(tblSanPham);
-        if (tblSanPham.getColumnModel().getColumnCount() > 0) {
-            tblSanPham.getColumnModel().getColumn(2).setHeaderValue("Loại");
-            tblSanPham.getColumnModel().getColumn(3).setHeaderValue("Giá giảm");
-            tblSanPham.getColumnModel().getColumn(4).setHeaderValue("Giá gốc");
-        }
 
         tblSize.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblSize.setModel(new javax.swing.table.DefaultTableModel(
@@ -721,8 +719,9 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 suaSl(masp, Integer.parseInt(lblMaHoaDon.getText()));
             }
         } else if (!DAOHDCHITIET.selectByIdHD_TT1(Integer.parseInt(lblMaHoaDon.getText()), masp).isEmpty()) {
-            if (JOptionPane.showConfirmDialog(this, "Sản phẩm này đã có trong hóa đơn bạn có muốn sửa số lượng?") == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(this, "Đồ uống này đã có trong hóa đơn, vui lòng sửa số lượng\n WARNNING: Size không thể thay đổi!") == JOptionPane.YES_OPTION) {
                 suaSl(masp, Integer.parseInt(lblMaHoaDon.getText()));
+              
             }
         } else {
             NhapsoluongSanPhamJDialog a = new NhapsoluongSanPhamJDialog(null, true, masp, Integer.parseInt(lblMaHoaDon.getText()));
@@ -756,11 +755,21 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
 
     private void mnaddDEskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnaddDEskActionPerformed
         // TODO add your handling code here:
-        ThemBanJDialog themBan = new ThemBanJDialog(null, true);
-        themBan.setVisible(true);
-        filltoDesk();
-        filltoDesktaiquay();
-        updateUI();
+//        ThemBanJDialog themBan = new ThemBanJDialog(null, true);
+//        themBan.setVisible(true);
+//        filltoDesk();
+//        filltoDesktaiquay();
+//        updateUI();
+          if(Auth.isManager()){
+              ThemBanJDialog themBan = new ThemBanJDialog(null, true);
+              themBan.setVisible(true);
+              filltoDesk();
+              filltoDesktaiquay();
+              updateUI();
+          }else{
+              JOptionPane.showMessageDialog(this, "Vui lòng đăng nhập tài khoản quản lý để sử dụng chức năng này!");
+              return;
+          }
     }//GEN-LAST:event_mnaddDEskActionPerformed
 
     private void btnTaoDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoDonActionPerformed
@@ -882,16 +891,17 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
         } else {
             int tienkhachtra = Integer.parseInt(txttienKhachTra.getText());
             if (txttienKhachTra.getText().equals("") || tienkhachtra == 0) {
-                JOptionPane.showMessageDialog(this, "Khách chưa trả tiền hóa đơn");
+                JOptionPane.showMessageDialog(this, "Thanh toán thất bại! \nKhách chưa trả tiền hóa đơn");
                 return;
             }
             int tienThoi = Integer.parseInt(txttienThoi.getText());
             if (tienThoi < 0) {
-                JOptionPane.showMessageDialog(this, "khách trả thiếu tiền hóa đơn");
+                JOptionPane.showMessageDialog(this, "Thanh toán thất bại! \n Khách trả thiếu tiền hóa đơn.");
                 return;
             }
             thanhToanDon();
             JOptionPane.showMessageDialog(this, "Thanh toán thành công");
+            DAOSP.update_size2("DV1");
         }
         filltoTableHDCT();
         filltoHoadonCTT();
@@ -1510,9 +1520,8 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             for (SanPham sp : list) {
                 model.addRow(new Object[]{sp.getId_sp(),
                     sp.getTen_sp(), DAOLSP.selectId_LSP(sp.getId_loaiSP()).getTenLoai(),
-                    SanPhamGiamGia(sp.getId_sp(), sp.getGia_sp()) == 0 ? sp.getGia_sp() : SanPhamGiamGia(sp.getId_sp(), sp.getGia_sp()),
-                    sp.getGia_sp(), DAODVSP.selectid_DVDU(sp.getId_donviSP()).getTenDonvi(),
-                    GiaTheoSize(sp.getId_sp())
+                    NumberFormat.getInstance().format(SanPhamGiamGia(sp.getId_sp(), sp.getGia_sp()) == 0 ? sp.getGia_sp() : SanPhamGiamGia(sp.getId_sp(), sp.getGia_sp())),
+                    NumberFormat.getInstance().format(sp.getGia_sp())
                 });
             }
         } catch (Exception e) {
@@ -1526,7 +1535,7 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
             List<DonViSanPham> list = DAODVSP.selectAll();
             for(DonViSanPham dv : list){
                 model.addRow(new Object[]{
-                    dv.getTenDonvi(),dv.getThemTien()
+                    dv.getTenDonvi(),NumberFormat.getInstance().format(dv.getThemTien())
                 });
             }
         } catch (Exception e) {
@@ -1653,10 +1662,10 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                     hdct.getID_SanPHam(),
                     DAOSP.selecteByIDSP(hdct.getID_SanPHam()).getTen_sp(),
                     hdct.getSoluong(),
-                    DAOSP.selecteByIDSP(hdct.getID_SanPHam()).getGia_sp(),
+                    NumberFormat.getInstance().format(SanPhamGiamGia(sp.getId_sp(), sp.getGia_sp()) == 0 ? sp.getGia_sp() : SanPhamGiamGia(sp.getId_sp(), sp.getGia_sp())),
                     DAODVSP.selectid_DVDU(sp.getId_donviSP()).getTenDonvi(),
-                    DAODVSP.selectid_DVDU(sp.getId_donviSP()).getThemTien(),
-                    hdct.getTongGia(),
+                    NumberFormat.getInstance().format(DAODVSP.selectid_DVDU(sp.getId_donviSP()).getThemTien()),
+                    NumberFormat.getInstance().format( hdct.getTongGia()),
                     hdct.getGhiChu()
                 });
             }
@@ -1781,11 +1790,12 @@ public class QuanLyBanHangJPanel extends javax.swing.JPanel {
                 hd.getNgayTao(),
                 hd.isTrangThaiTT() ? "Thanh toán" : "Chưa thanh toán",
                 DAONV.selectById(hd.getIdNhanVien()).getTenNV(),
-                hd.getThanhTien(),
+                NumberFormat.getInstance().format(hd.getThanhTien()),
                 DAOBAN.selectIDHD(hd.getIdHoaDon()).getIdBan(),
                 hd.getSDT()
             });
-            //System.out.println(hd.getIdHoaDon());
+            
+            System.out.println("thành tiền: "+hd.getThanhTien());
         }
     }
 

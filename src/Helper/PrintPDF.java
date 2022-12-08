@@ -25,7 +25,8 @@ import javax.swing.GroupLayout;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-
+import java.text.NumberFormat;
+import java.util.Locale;
 /**
  *
  * @author admin
@@ -34,7 +35,8 @@ public class PrintPDF {
 
     HoaDonDAO hddao = new HoaDonDAO();
     BanChiTietDAO bctdao = new BanChiTietDAO();
-
+    Locale vn = new Locale("vi","VN");
+    //NumberFormat nbf = 
     public void a(DefaultTableModel model, int mahd, int tienkh, int tienthoi) {
         Hoadon hd = hddao.selectById(mahd);
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
@@ -74,7 +76,7 @@ public class PrintPDF {
             PdfPCell a5 = new PdfPCell(new Phrase(hd.getNgayTao() + "", f2));
             a.addCell(a5).setBorder(0);
 
-            PdfPTable t = new PdfPTable(4);
+            PdfPTable t = new PdfPTable(5);
             t.setSpacingBefore(35);
             t.setSpacingAfter(35);
 
@@ -82,8 +84,10 @@ public class PrintPDF {
             t.addCell(c1);
             PdfPCell c2 = new PdfPCell(new Phrase("Số lượng", f));
             t.addCell(c2);
-            PdfPCell c3 = new PdfPCell(new Phrase("Giá", f));
+            PdfPCell c3 = new PdfPCell(new Phrase("Giá (VND)", f));
             t.addCell(c3);
+            PdfPCell c0 = new PdfPCell(new Phrase("Size", f));
+            t.addCell(c0);
             PdfPCell c4 = new PdfPCell(new Phrase("Thành tiền", f));
             t.addCell(c4);
 
@@ -94,6 +98,7 @@ public class PrintPDF {
                     t.addCell(model.getValueAt(i, 3).toString());
                     t.addCell(model.getValueAt(i, 4).toString());
                     t.addCell(model.getValueAt(i, 5).toString());
+                    t.addCell(model.getValueAt(i, 7).toString());
                 }
             }
             document.add(a);
@@ -101,11 +106,11 @@ public class PrintPDF {
             PdfPTable b = new PdfPTable(2);
             PdfPCell b1 = new PdfPCell(new Phrase("Tổng tiền: ", f2));
             b.addCell(b1).setBorder(0);
-            PdfPCell b2 = new PdfPCell(new Phrase("" + hd.getThanhTien(), f2));
+            PdfPCell b2 = new PdfPCell(new Phrase("" + NumberFormat.getInstance().format(hd.getThanhTien()) +" VND", f2));
             b.addCell(b2).setBorder(0);
             PdfPCell b3 = new PdfPCell(new Phrase("Tiền khách trả: ", f2));
             b.addCell(b3).setBorder(0);
-            PdfPCell b4 = new PdfPCell(new Phrase("" + tienkh, f2));
+            PdfPCell b4 = new PdfPCell(new Phrase("" + NumberFormat.getInstance().format(tienkh) +" VND", f2));
             b.addCell(b4).setBorder(0);
 //            PdfPCell b5 = new PdfPCell(new Phrase("Tiền thối: ", f2));
 //            b.addCell(b5).setBorder(0);

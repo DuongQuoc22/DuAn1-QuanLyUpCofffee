@@ -7,7 +7,7 @@ package Dao;
 
 import Model.HoaDonChiTiet;
 import java.util.List;
-
+import Model.SanPham;
 /**
  *
  * @author HP
@@ -36,4 +36,5 @@ public interface InterfaceHoadonchittiet {
     abstract public List<HoaDonChiTiet> selectBySql(String sql, Object... args);
     
     abstract public int selectCount(String sql, Object... args);
+   
 }

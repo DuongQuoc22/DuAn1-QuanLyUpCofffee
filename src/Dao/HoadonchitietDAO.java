@@ -8,6 +8,7 @@ package Dao;
 import Model.HoaDonChiTiet;
 import Helper.JDBCHeper;
 import java.sql.ResultSet;
+import Model.SanPham;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,8 +39,9 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
     String UPDATE_LY_DO_HUY = "UPDATE dbo.HoaDonChiTiet SET Lydohuy = ? WHERE ID_HoaDon = ? AND ID_SanPham = ?";
     String UPDATE_Ghi_chu = "UPDATE dbo.HoaDonChiTiet SET ghichu = ? WHERE ID_HoaDon = ? AND ID_SanPham = ?";
     String selcecCountSPhuy = "SELECT COUNT(*) AS Soluongdonhuy FROM dbo.HoaDonChiTiet WHERE TTthanhtoan = 0 AND ID_HoaDon = ?";
-    String SELECT_BY_ID_SQL_thao = "SELECT * FROM dbo.HoaDonChiTiet WHERE ID_HoaDon = ?";
-
+    String SELECT_BY_ID_SQL_1 = "SELECT * FROM dbo.HoaDonChiTiet WHERE ID_HoaDon = ?";
+    
+    
     @Override
     public void insert(HoaDonChiTiet Entity) {
         Helper.JDBCHeper.update(INSERT_SQL, Entity.getID_Hoadon(), Entity.getID_SanPHam(), Entity.getSoluong(), Entity.getGia(), Entity.getTongGia(), Entity.isTrangThai(), Entity.getLyDoHuy(), Entity.getGhiChu());
@@ -142,7 +144,7 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
     }
 
     public List<HoaDonChiTiet> selectById1(int id) {
-        return this.selectBySql(SELECT_BY_ID_SQL_thao, id);
+        return this.selectBySql(SELECT_BY_ID_SQL_1, id);
     }
 
     public List<HoaDonChiTiet> selectByIdHD(int id) {
@@ -156,4 +158,6 @@ public class HoadonchitietDAO implements InterfaceHoadonchittiet {
     public void deletehoadonct(int mahd, String masp) {
         Helper.JDBCHeper.update(DELETE_SQL, mahd, masp);
     }
+
+    
 }

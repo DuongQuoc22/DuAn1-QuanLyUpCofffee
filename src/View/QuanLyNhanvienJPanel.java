@@ -23,7 +23,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
+import java.util.regex.*;
 /**
  *
  * @author HP
@@ -40,8 +40,27 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
     public QuanLyNhanvienJPanel() {
         initComponents();
         init();
+        authen();
+        txtMaNV.setEditable(false);
+        rdoLamviec.setSelected(true);
     }
-
+    public void authen(){
+        if(Auth.isManager()){
+            btnThem.setEnabled(true);
+            btnSua.setEnabled(true);
+            btnXoa.setEnabled(true);
+            tbnLamMoi.setEnabled(true);
+        }else{
+            btnThem.setEnabled(false);
+            btnSua.setEnabled(false);
+            btnXoa.setEnabled(false);
+            tbnLamMoi.setEnabled(false);
+            btnThem.setVisible(false);
+            btnSua.setVisible(false);
+            tbnLamMoi.setVisible(false);
+            btnXoa.setVisible(false);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -469,7 +488,7 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        if (checkNull() && checkEmail() && checkSDT() && checkSame() && checkSameAccount() && checkLength()) {
+        if (checkNull() && checkRegex() && checkEmail() && checkSDT() && checkSame() && checkSameAccount() && checkLength()) {
             this.insert();
         }
 
@@ -482,7 +501,7 @@ public class QuanLyNhanvienJPanel extends javax.swing.JPanel {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-        if (checkNull() && checkEmail() && checkSDT()) {
+        if (checkNull() && checkRegex() && checkEmail() && checkSDT()) {
             this.update();
         }
     }//GEN-LAST:event_btnSuaActionPerformed
@@ -911,6 +930,7 @@ void init() {
             JOptionPane.showMessageDialog(this, "Không được để trống tên nhân viên");
             return false;
         }
+        
         if (txtEmail.getText().isEmpty() == true) {
             JOptionPane.showMessageDialog(this, "Không được để trống Email nhân viên");
             return false;
@@ -950,7 +970,31 @@ void init() {
             return false;
         }
     }
-
+    public boolean checkRegex(){
+        Pattern regex = Pattern.compile("[^A-Za-z0-9]");
+        Pattern regex2 = Pattern.compile("[a-zA-Z]");
+        if(regex.matcher(txtTenNV.getText()).find()){
+            JOptionPane.showMessageDialog(this, "Tên chứa ký tự đặc biệt, vui lòng xem lại!");
+            txtTenNV.requestFocus();
+            return false;
+        }
+        if(regex.matcher(txtTaikhoan.getText()).find()){
+            JOptionPane.showMessageDialog(this, "Tài khoản chứa ký tự đặc biệt, vui lòng xem lại!");
+            txtTaikhoan.requestFocus();
+            return false;
+        }
+        if(regex2.matcher(txtSDT.getText()).find()){
+            JOptionPane.showMessageDialog(this, "Số điện thoại chỉ nhận giá trị số!");
+            txtSDT.requestFocus();
+            return false;
+        }
+        if(regex.matcher(txtMatkhau.getText()).find()){
+            JOptionPane.showMessageDialog(this, "Mật khẩu chứa ký tự đặc biệt, vui lòng xem lại!");
+            txtMatkhau.requestFocus();
+            return false;
+        }
+        return true;
+    }
     public boolean checkEmail() {
         String id = txtEmail.getText();
         String rgx = "^[a-zA-Z][a-zA-Z0-9_\\.]{2,32}@[a-zA-Z0-9]{2,10}(\\.[a-zA-Z0-9]{2,4}){1,2}$";

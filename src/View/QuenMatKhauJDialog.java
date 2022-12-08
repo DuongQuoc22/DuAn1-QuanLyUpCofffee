@@ -37,7 +37,7 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         //txtMaxacnhan.setEditable(false);
-        //txtMaxacnhan.setEnabled(false);
+        txtMaxacnhan.setEnabled(false);
 
     }
 
@@ -313,10 +313,11 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
     }
     
     public boolean checkOTP(){
+        Pattern regex = Pattern.compile("[a-zA-Z]");
         if (txtMaxacnhan.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Mã xác nhận trống");
             return true;
-        }else if(txtMaxacnhan.getText().matches("[0-9]")){
+        }else if(regex.matcher(txtMaxacnhan.getText()).find()){
             JOptionPane.showMessageDialog(rootPane, "Mã OTP sai định dạng!");
             return true;
         }
@@ -332,7 +333,7 @@ public class QuenMatKhauJDialog extends javax.swing.JDialog {
             new DangnhapJDialog(new javax.swing.JFrame(), true).setVisible(true);
             return ;
         }else if(!txtMaxacnhan.getText().equals(code)){
-            JOptionPane.showMessageDialog(this, "Mã OTP không chính xác! Hoặc sai định dạng");
+            JOptionPane.showMessageDialog(this, "Mã OTP không chính xác!");
             txtMaxacnhan.requestFocus();
             return;
         }else{
